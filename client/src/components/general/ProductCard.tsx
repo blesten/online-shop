@@ -3,7 +3,7 @@ import { CiHeart } from 'react-icons/ci'
 
 const ProductCard = () => {
   return (
-    <div>
+    <div className=''>
       <div className='w-full h-80 bg-gray-100 rounded-xl mb-6 relative'>
         <div className='p-1 bg-white rounded-full w-fit text-2xl absolute top-4 right-5 cursor-pointer'>
           <CiHeart />
