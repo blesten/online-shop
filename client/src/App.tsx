@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import Detail from './pages/products/Detail'
+import Products from './pages/products'
+import Cart from './pages/Cart'
 
 const App = () => {
   return (
@@ -9,6 +11,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<SignIn />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path='/products/:slug' element={<Detail />} />
       </Routes>
     </Router>

@@ -4,14 +4,16 @@ import { APP_NAME } from "../../utils/constant"
 import Footer from "../../components/general/Footer"
 import Navbar from "../../components/general/Navbar"
 import ProductCard from '../../components/general/ProductCard';
+import HeadInfo from '../../utils/HeadInfo';
 
 const Detail = () => {
   return (
     <>
+      <HeadInfo title='Blazer Long Sleeve' />
       <Navbar />
       <div className='pt-10'>
         {/* header */}
-        <div className='md:px-12 px-6 flex gap-8 items-center'>
+        <div className='md:px-12 px-6 flex md:flex-row flex-col gap-8 md:items-center'>
           <div className='flex-1 h-[600px] rounded-md'>
             <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/login.jpg`} alt={`${APP_NAME} Product Name`} className='w-full h-full object-cover rounded-md' />
           </div>
@@ -35,7 +37,7 @@ const Detail = () => {
             </div>
             <div className='mt-10'>
               <p className='font-semibold'>Select Size:</p>
-              <div className='mt-5 flex items-center gap-3'>
+              <div className='mt-5 flex items-center gap-3 flex-wrap'>
                 <div className='py-2 px-5 bg-gray-100 rounded-md w-fit cursor-pointer hover:bg-black hover:text-white transition'>
                   <p className='text-sm'>X-Small</p>
                 </div>
@@ -76,7 +78,7 @@ const Detail = () => {
         {/* middle */}
         <div className='md:px-12 px-6 mt-20'>
           <h1 className='text-center text-3xl font-medium'>Elevate Your Style</h1>
-          <div className='w-6/12 m-auto text-center mt-6'>
+          <div className='md:w-6/12 m-auto text-center mt-6'>
             <p className='text-gray-500 text-sm leading-loose'>Elevate your style with our Blazer Long Sleeve. This versatile piece effortlessly blends comfort and fashion with high-quality material and stylish design, perfect for any occasion</p>
           </div>
           <div className='bg-gray-100 rounded-full py-2 px-2 m-auto w-fit flex items-center gap-3 mt-7 cursor-pointer'>
