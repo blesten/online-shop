@@ -1,4 +1,5 @@
 import { FaTshirt } from 'react-icons/fa'
+import { MdCategory } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import HeadInfo from './../../utils/HeadInfo'
 import { ReactNode } from 'react'
@@ -12,7 +13,7 @@ const AdminLayout: React.FC<IProps> = ({ title, children }) => {
   return (
     <>
       <HeadInfo title={title} />
-      <div className='flex h-screen'>
+      <div className='flex h-screen max-h-screen'>
         <div className='flex flex-col flex-1 py-10'>
           <div className='flex-1'>
             <div className='flex flex-col items-center'>
@@ -21,9 +22,9 @@ const AdminLayout: React.FC<IProps> = ({ title, children }) => {
               <p className='text-xs text-gray-400 mt-2'>Admin</p>
             </div>
             <div className='mt-8'>
-              <Link to='/' className='flex items-center gap-3 px-5 py-4 outline-none bg-gray-900 text-white before:content-[""] before:absolute before:top-0 before:left-0 before:w-1 before:h-full before:bg-gray-600 relative'>
-                <FaTshirt />
-                <p>Products</p>
+              <Link to='/admin/category' className='flex items-center gap-3 px-5 py-4 outline-none bg-gray-900 text-white before:content-[""] before:absolute before:top-0 before:left-0 before:w-1 before:h-full before:bg-gray-600 relative'>
+                <MdCategory />
+                <p>Category</p>
               </Link>
               <Link to='/' className='flex items-center gap-3 px-5 py-4 outline-none hover:bg-gray-900 hover:text-white hover:before:content-[""] hover:before:absolute hover:before:top-0 hover:before:left-0 hover:before:w-1 hover:before:h-full hover:before:bg-gray-600 transition relative'>
                 <FaTshirt />
