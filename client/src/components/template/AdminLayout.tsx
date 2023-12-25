@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { FaTshirt } from 'react-icons/fa'
-import { MdCategory } from 'react-icons/md'
+import { MdCategory, MdDiscount } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import HeadInfo from './../../utils/HeadInfo'
 import { ReactNode } from 'react'
@@ -32,6 +32,10 @@ const AdminLayout: React.FC<IProps> = ({ title, children }) => {
               <Link to='/admin/product' className={`${pathname === '/admin/product' ? 'bg-gray-900 text-white before:content-[""] before:absolute before:top-0 before:left-0 before:w-1 before:h-full before:bg-gray-600' : 'hover:bg-gray-900 hover:text-white hover:before:content-[""] hover:before:absolute hover:before:top-0 hover:before:left-0 hover:before:w-1 hover:before:h-full hover:before:bg-gray-600 transition'} flex items-center gap-3 px-5 py-4 outline-none relative`}>
                 <FaTshirt />
                 <p>Products</p>
+              </Link>
+              <Link to='/admin/product-discount' className={`${pathname === '/admin/product-discount' ? 'bg-gray-900 text-white before:content-[""] before:absolute before:top-0 before:left-0 before:w-1 before:h-full before:bg-gray-600' : 'hover:bg-gray-900 hover:text-white hover:before:content-[""] hover:before:absolute hover:before:top-0 hover:before:left-0 hover:before:w-1 hover:before:h-full hover:before:bg-gray-600 transition'} flex items-center gap-3 px-5 py-4 outline-none relative`}>
+                <MdDiscount />
+                <p>Product Discount</p>
               </Link>
             </div>
           </div>

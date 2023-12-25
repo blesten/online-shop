@@ -83,8 +83,8 @@ const Category = () => {
                 <thead className='text-sm text-gray-500 font-normal'>
                   <tr>
                     <th className='pb-5'>Category Name</th>
-                    <th>Created At</th>
-                    <th>Action</th>
+                    <th className='pb-5'>Created At</th>
+                    <th className='pb-5'>Action</th>
                   </tr>
                 </thead>
                 <tbody className='text-sm'>
