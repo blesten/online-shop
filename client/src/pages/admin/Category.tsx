@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { LuPlus } from 'react-icons/lu'
 import { VscTextSize } from 'react-icons/vsc'
 import { AiOutlineSearch } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 import AdminLayout from './../../components/template/AdminLayout'
 import { MdEdit } from 'react-icons/md'
 import { FaTrashAlt } from 'react-icons/fa'
@@ -9,6 +10,7 @@ import Pagination from '../../components/general/Pagination'
 import UpsertCategory from '../../components/modal/CategoryManagement/UpsertCategory'
 import SetDefaultSize from '../../components/modal/CategoryManagement/SetDefaultSize'
 import Delete from '../../components/modal/Delete'
+import useStore from './../../store/store'
 
 const Category = () => {
   const [openUpsertCategoryModal, setOpenUpsertCategoryModal] = useState(false)
@@ -19,6 +21,10 @@ const Category = () => {
   const upsertCategoryModalRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const setDefaultSizeModalRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const deleteModalRef = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  const navigate = useNavigate()
+
+  const { userState } = useStore()
 
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
@@ -52,6 +58,18 @@ const Category = () => {
     document.addEventListener('mousedown', checkIfClickedOutside)
     return () => document.removeEventListener('mousedown', checkIfClickedOutside)
   }, [openDeleteModal])
+
+  useEffect(() => {
+    if (!userState.loading) {
+      if (userState.data.accessToken) {
+        if (userState.data.user?.role !== 'admin') {
+          navigate('/')
+        }
+      } else {
+        navigate('/login')
+      }
+    }
+  }, [userState.data, userState.loading, navigate])
   
   return (
     <>
