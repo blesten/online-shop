@@ -93,7 +93,11 @@ const Product = () => {
               </table>
             </div>
             <div className='mt-12 flex justify-center'>
-              <Pagination />
+              <Pagination
+                currentPage={0}
+                totalPage={0}
+                handleChangePage={(type: string) => {}}
+              />
             </div>
           </div>
         </div>

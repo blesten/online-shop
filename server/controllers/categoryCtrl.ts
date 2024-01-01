@@ -7,7 +7,7 @@ const categoryCtrl = {
   create: async(req: Request, res: Response) => {
     try {
       const { name, availableSizes, availableSizeParameters } = req.body
-      if (!name || availableSizes.length < 1  || availableSizeParameters.length < 1)
+      if (!name || availableSizes.length < 1  || availableSizeParameters.length < 1 || availableSizes.includes('') || availableSizeParameters.includes(''))
         return res.status(400).json({ msg: 'Please provide required field to create category.' })
 
       const category = await Category.findOne({ name })
@@ -85,7 +85,7 @@ const categoryCtrl = {
         return res.status(404).json({ msg: `Category with ID ${id} not found.` })
 
       const { name, availableSizes, availableSizeParameters, sizeChart } = req.body
-      if (!name || availableSizes.length < 1 || availableSizeParameters.length < 1 || sizeChart.length < 1)
+      if (!name || availableSizes.length < 1 || availableSizeParameters.length < 1 || sizeChart.length < 1 || availableSizes.includes('') || availableSizeParameters.includes(''))
         return res.status(400).json({ msg: 'Please provide required field to update category.' })
 
       const isCategoryNameAvailable = await Category.find({ name, _id: { $ne: id } })
