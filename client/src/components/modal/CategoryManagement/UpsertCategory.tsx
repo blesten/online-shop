@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FormChanged, FormSubmitted } from '../../../utils/interface'
 import useStore from './../../../store/store'
@@ -16,6 +17,8 @@ const UpsertCategory: React.FC<IProps> = ({ openUpsertCategoryModal, setOpenUpse
     sizeParameter: ['']
   })
   const [loading, setLoading] = useState(false)
+
+  const navigate = useNavigate()
 
   const { createCategory, userState } = useStore()
 
@@ -70,6 +73,7 @@ const UpsertCategory: React.FC<IProps> = ({ openUpsertCategoryModal, setOpenUpse
       availableSize: [''],
       sizeParameter: ['']
     })
+    navigate('/admin/category')
     setLoading(false)
   }
 

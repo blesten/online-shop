@@ -59,7 +59,7 @@ const categoryCtrl = {
       let totalPage = 0
 
       if (category.length === 0) {
-        totalPage = 0
+        totalPage = 1
       } else {
         if (categoryCount % limit === 0) {
           totalPage = categoryCount / limit
