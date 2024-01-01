@@ -30,7 +30,7 @@ const Category = () => {
   const { search } = useLocation()
   const searchParams = new URLSearchParams(search)
   const page = Number(searchParams.get('page')) || 1
-  const limit = 3
+  const limit = 9
 
   const { userState, categoryState, readCategory, deleteCategory } = useStore()
 
@@ -50,6 +50,11 @@ const Category = () => {
     }
   }
 
+  const handleClickEdit = (item: ICategory) => {
+    setSelectedCategory(item)
+    setOpenUpsertCategoryModal(true)
+  }
+
   const handleClickDelete = (item: ICategory) => {
     setSelectedCategory(item)
     setOpenDeleteModal(true)
@@ -67,6 +72,7 @@ const Category = () => {
     const checkIfClickedOutside = (e: MouseEvent) => {
       if (openUpsertCategoryModal && upsertCategoryModalRef.current && !upsertCategoryModalRef.current.contains(e.target as Node)) {
         setOpenUpsertCategoryModal(false)
+        setSelectedCategory({})
       }
     }
 
@@ -157,21 +163,31 @@ const Category = () => {
                           <th className='pb-5'>Action</th>
                         </tr>
                       </thead>
-                      <tbody className='text-sm'>
-                        {
-                          categoryState.data.map(item => (
-                            <tr key={item._id} className='border-b border-gray-200'>
-                              <td className='py-4'>{item.name}</td>
-                              <td>{formatDate(item.createdAt)}</td>
-                              <td className='flex items-center gap-5 py-4'>
-                                <MdEdit className='text-blue-500 text-xl cursor-pointer' />
-                                <FaTrashAlt onClick={() => handleClickDelete(item)} className='text-red-500 text-lg cursor-pointer' />
-                                <VscTextSize onClick={() => setOpenSetDefaultSizeModal(true)} className='text-xl text-orange-500 cursor-pointer' />
-                              </td>
-                            </tr>
-                          ))
-                        }
-                      </tbody>
+                      {
+                        categoryState.data.length === 0
+                        ? (
+                          <tr className='bg-red-500'>
+                            <td colSpan={3} className='rounded-md text-center text-white font-bold py-3 text-sm'>No records found</td>
+                          </tr>
+                        )
+                        : (
+                          <tbody className='text-sm'>
+                            {
+                              categoryState.data.map(item => (
+                                <tr key={item._id} className='border-b border-gray-200'>
+                                  <td className='py-4'>{item.name}</td>
+                                  <td>{formatDate(item.createdAt)}</td>
+                                  <td className='flex items-center gap-5 py-4'>
+                                    <MdEdit onClick={() => handleClickEdit(item)} className='text-blue-500 text-xl cursor-pointer' />
+                                    <FaTrashAlt onClick={() => handleClickDelete(item)} className='text-red-500 text-lg cursor-pointer' />
+                                    <VscTextSize onClick={() => setOpenSetDefaultSizeModal(true)} className='text-xl text-orange-500 cursor-pointer' />
+                                  </td>
+                                </tr>
+                              ))
+                            }
+                          </tbody>
+                        )
+                      }
                     </table>
                   </div>
                   {
@@ -195,6 +211,8 @@ const Category = () => {
         openUpsertCategoryModal={openUpsertCategoryModal}
         setOpenUpsertCategoryModal={setOpenUpsertCategoryModal}
         upsertCategoryModalRef={upsertCategoryModalRef}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
 
       <SetDefaultSize
