@@ -68,7 +68,7 @@ const productCtrl = {
       }
 
       const colorsKey = ['hexCode', 'colorName', 'sizes']
-      const sizesKey = ['size', 'stock', 'available']
+      const sizesKey = ['size', 'stock']
       for (const color of colors) {
         const providedColorKeys = Object.keys(color)
         if (!checkArrayEquality(providedColorKeys, colorsKey))
@@ -258,7 +258,7 @@ const productCtrl = {
       }
 
       const colorsKey = ['hexCode', 'colorName', 'sizes']
-      const sizesKey = ['size', 'stock', 'available']
+      const sizesKey = ['size', 'stock']
       for (const color of colors) {
         const providedColorKeys = Object.keys(color)
         if (!checkArrayEquality(providedColorKeys, colorsKey))
