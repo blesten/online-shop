@@ -99,7 +99,10 @@ const productCtrl = {
 
       return res.status(200).json({
         msg: `${name} product has been created successfully.`,
-        product
+        product: {
+          ...product._doc,
+          category: matchedCategory
+        }
       })
     } catch (err: any) {
       return res.status(500).json({ msg: err.message })
@@ -124,6 +127,7 @@ const productCtrl = {
           }
         },
         { $unwind: '$category' },
+        { $sort: { createdAt: -1 } },
         { $skip: skip },
         { $limit: limit }
       ]
