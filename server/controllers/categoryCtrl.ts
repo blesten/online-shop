@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import Category from '../models/Category'
 import { checkArrayEquality, getUniqueValues } from '../utils/helper'
 import { pagination } from '../utils/pagination'
+import Product from '../models/Product'
 
 const categoryCtrl = {
   create: async(req: Request, res: Response) => {
@@ -247,12 +248,13 @@ const categoryCtrl = {
     try {
       const { id } = req.params
       const category = await Category.findById(id)
-      // query product with currrent category
+      const product = await Product.find({ category: id })
       
       if (!category)
         return res.status(404).json({ msg: `Category with ID ${id} not found.` })
 
-      // if length of product is greater than 0, then delete operation can't be done, otherwise delete category
+      if (product.length > 0)
+        return res.status(400).json({ msg: `Several products still have ${category.name} category.` })
 
       await Category.findByIdAndDelete(id)
       return res.status(200).json({ msg: `Category with ID ${id} has been deleted successfully.` })

@@ -261,8 +261,8 @@ const productCtrl = {
         }
       }
 
-      const colorsKey = ['hexCode', 'colorName', 'sizes']
-      const sizesKey = ['size', 'stock']
+      const colorsKey = ['hexCode', 'colorName', 'sizes', '_id']
+      const sizesKey = ['size', 'stock', '_id']
       for (const color of colors) {
         const providedColorKeys = Object.keys(color)
         if (!checkArrayEquality(providedColorKeys, colorsKey))
@@ -302,7 +302,7 @@ const productCtrl = {
           width,
           length,
           height,
-          category,
+          category: matchedCategory,
           colors,
           images,
           sizeChart

@@ -47,6 +47,11 @@ const Product = () => {
     }
   }
 
+  const handleClickEdit = (item: IProduct) => {
+    setSelectedProduct(item)
+    setOpenUpsertProductModal(true)
+  }
+
   const handleClickDelete = (item: IProduct) => {
     setSelectedProduct(item)
     setOpenDeleteModal(true)
@@ -65,6 +70,7 @@ const Product = () => {
     const checkIfClickedOutside = (e: MouseEvent) => {
       if (openUpsertProductModal && upsertProductModalRef.current && !upsertProductModalRef.current.contains(e.target as Node)) {
         setOpenUpsertProductModal(false)
+        setSelectedProduct({})
       }
     }
 
@@ -167,7 +173,7 @@ const Product = () => {
                                   <td>{item.category.name}</td>
                                   <td>{formatDate(item.createdAt)}</td>
                                   <td className='flex items-center gap-4 py-4'>
-                                    <MdEdit className='text-blue-500 text-xl cursor-pointer' />
+                                    <MdEdit onClick={() => handleClickEdit(item)} className='text-blue-500 text-xl cursor-pointer' />
                                     <FaTrashAlt onClick={() => handleClickDelete(item)} className='text-red-500 text-lg cursor-pointer' />
                                   </td>
                                 </tr>
@@ -199,6 +205,8 @@ const Product = () => {
         openUpsertProductModal={openUpsertProductModal}
         setOpenUpsertProductModal={setOpenUpsertProductModal}
         upsertProductModalRef={upsertProductModalRef}
+        selectedProduct={selectedProduct}
+        setSelectedProduct={setSelectedProduct}
       />
 
       <Delete
