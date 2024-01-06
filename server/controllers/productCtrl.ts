@@ -4,6 +4,7 @@ import Category from '../models/Category'
 import { checkArrayEquality } from '../utils/helper'
 import Product from '../models/Product'
 import { pagination } from '../utils/pagination'
+import ProductDiscount from '../models/ProductDiscount'
 
 const productCtrl = {
   create: async(req: Request, res: Response) => {
@@ -313,7 +314,6 @@ const productCtrl = {
     }
   },
   delete: async(req: Request, res: Response) => {
-    // delete correlated productDiscount
     try {
       const { id } = req.params
       const product = await Product.findById(id)
@@ -322,6 +322,10 @@ const productCtrl = {
         return res.status(404).json({ msg: `Product with ID ${id} not found.` })
 
       await Product.findByIdAndDelete(id)
+
+      const productDiscount = await ProductDiscount.find({ product: id })
+      if (productDiscount.length > 0)
+        await ProductDiscount.findByIdAndDelete(productDiscount[0]._id)
 
       return res.status(200).json({
         msg: `Product with ID ${id} has been deleted successfully.`,

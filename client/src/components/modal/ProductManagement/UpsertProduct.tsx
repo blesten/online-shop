@@ -347,7 +347,7 @@ const UpsertProduct: React.FC<IProps> = ({ openUpsertProductModal, setOpenUpsert
                       </div>
                     )
                     : (
-                      <div className='absolute left-0 top-full bg-whte rounded-md mt-2 shadow-lg w-full border border-gray-300 bg-white'>
+                      <div className='absolute left-0 top-full rounded-md mt-2 shadow-lg w-full border border-gray-300 bg-white'>
                         {
                           categoryData.map((item, idx) => (
                             <div key={item._id} onClick={() => handleClickCategory(item)} className={`hover:bg-gray-100 transition cursor-pointer w-full p-3 ${idx === 0 && categoryData.length > 1 ? 'rounded-t-md border-b border-gray-300' : idx === categoryData.length - 1 && categoryData.length > 1 ? 'rounded-b-md' : idx === 0 && categoryData.length === 1 ? 'rounded-md' : ''}`}>

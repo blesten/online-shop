@@ -158,9 +158,11 @@ const Product = () => {
                       {
                         productState.data.length === 0
                         ? (
-                          <tr className='bg-red-500'>
-                            <td colSpan={5} className='rounded-md text-center text-white font-bold py-3 text-sm'>No records found</td>
-                          </tr>
+                          <tbody>
+                            <tr className='bg-red-500'>
+                              <td colSpan={5} className='rounded-md text-center text-white font-bold py-3 text-sm'>No records found</td>
+                            </tr>
+                          </tbody>
                         )
                         : (
                           <tbody className='text-sm'>
