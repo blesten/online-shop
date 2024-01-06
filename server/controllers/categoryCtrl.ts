@@ -105,6 +105,14 @@ const categoryCtrl = {
       return res.status(500).json({ msg: err.message })
     }
   },
+  readAll: async(req: Request, res: Response) => {
+    try {
+      const category = await Category.find()
+      return res.status(200).json({ category })
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message })
+    }
+  },
   update: async(req: Request, res: Response) => {
     try {
       const { id } = req.params
