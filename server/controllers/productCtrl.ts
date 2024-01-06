@@ -195,6 +195,18 @@ const productCtrl = {
       return res.status(500).json({ msg: err.message })
     }
   },
+  readById: async(req: Request, res: Response) =>{ 
+    try {
+      const { id } = req.params
+      const product = await Product.findById(id).populate('category')
+      if (!product)
+        return res.status(404).json({ msg: `Product with ID ${id} not found.` })
+
+      return res.status(200).json({ product })
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message })
+    }
+  },
   update: async(req: Request, res: Response) => {
     try {
       const { id } = req.params
