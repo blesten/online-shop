@@ -10,6 +10,7 @@ export interface GlobalStoreState {
   categoryState: ICategoryState
   productState: IProductState
   productDiscountState: IProductDiscountState
+  ownerPickState: IOwnerPickState
 }
 
 export interface IGeneralField {
@@ -102,5 +103,14 @@ export interface IProductDiscountState {
   data: IProductDiscount[]
   totalPage: number
   totalData: number
+  loading: boolean
+}
+
+export interface IOwnerPick extends IGeneralField {
+  product: IProduct
+}
+
+export interface IOwnerPickState {
+  data: IOwnerPick[]
   loading: boolean
 }

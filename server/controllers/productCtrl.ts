@@ -5,6 +5,7 @@ import { checkArrayEquality } from '../utils/helper'
 import Product from '../models/Product'
 import { pagination } from '../utils/pagination'
 import ProductDiscount from '../models/ProductDiscount'
+import OwnerPick from '../models/OwnerPick'
 
 const productCtrl = {
   create: async(req: Request, res: Response) => {
@@ -338,6 +339,10 @@ const productCtrl = {
       const productDiscount = await ProductDiscount.find({ product: id })
       if (productDiscount.length > 0)
         await ProductDiscount.findByIdAndDelete(productDiscount[0]._id)
+
+      const ownerPick = await OwnerPick.findOne({ product: id })
+      if (ownerPick)
+        await OwnerPick.findByIdAndDelete(ownerPick._id)
 
       return res.status(200).json({
         msg: `Product with ID ${id} has been deleted successfully.`,

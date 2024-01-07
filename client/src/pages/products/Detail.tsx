@@ -31,6 +31,7 @@ const Detail = () => {
     // @ts-ignore
     if (size.stock !== 0) {
       setSelectedSize(size)
+      setQty(1)
     }
   }
 
