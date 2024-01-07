@@ -128,6 +128,56 @@ const productCtrl = {
             'as': 'category'
           }
         },
+        {
+          $lookup: {
+            'from': 'productdiscounts',
+            'localField': '_id',
+            'foreignField': 'product',
+            'as': 'discount'
+          }
+        },
+        {
+          $unwind: {
+            path: '$discount',
+            preserveNullAndEmptyArrays: true
+          }
+        },
+        {
+          $match: {
+            $or: [
+              { 'discount.active': 0 },
+              { 'discount.active': 1 },
+              { 'discount.active': -1 },
+              { 'discount': { $exists: false } }
+            ]
+          }
+        },
+        {
+          $group: {
+            _id: '$_id',
+            name: { $first: '$name' },
+            shortDescription: { $first: '$shortDescription' },
+            longDescription: { $first: '$longDescription' },
+            price: { $first: '$price' },
+            weight: { $first: '$weight' },
+            width: { $first: '$width' },
+            length: { $first: '$length' },
+            height: { $first: '$height' },
+            category: { $first: '$category' },
+            colors: { $first: '$colors' },
+            images: { $first: '$images' },
+            sizeChart: { $first: '$sizeChart' },
+            discount: {
+              $max: {
+                $cond: {
+                  if: { $eq: ['$discount.active', 1] },
+                  then: '$discount.percentage',
+                  else: 0
+                }
+              }
+            }
+          }
+        },
         { $unwind: '$category' },
         { $sort: { createdAt: -1 } },
         { $skip: skip },
@@ -199,11 +249,15 @@ const productCtrl = {
   readById: async(req: Request, res: Response) =>{ 
     try {
       const { id } = req.params
-      const product = await Product.findById(id).populate('category')
-      if (!product)
-        return res.status(404).json({ msg: `Product with ID ${id} not found.` })
+      const product = await Product.findOne({ _id: id })
+      const discount = await ProductDiscount.findOne({ product: id, active: 1 })
 
-      return res.status(200).json({ product })
+      return res.status(200).json({
+        product: {
+          ...product?._doc,
+          discount: discount?.percentage || 0
+        }
+      })
     } catch (err: any) {
       return res.status(500).json({ msg: err.message })
     }

@@ -83,6 +83,7 @@ export interface IProduct extends IGeneralField {
   colors: IProductColor[]
   images: string[]
   sizeChart: object[]
+  discount: number
 }
 
 export interface IProductState {
