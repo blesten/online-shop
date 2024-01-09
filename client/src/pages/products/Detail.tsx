@@ -241,6 +241,10 @@ const Detail = () => {
                             name={item.name}
                             price={item.price}
                             discount={item.discount}
+                            shortDescription={item.shortDescription}
+                            colors={item.colors}
+                            longDescription={item.longDescription}
+                            product={item}
                           />
                         ))
                       }

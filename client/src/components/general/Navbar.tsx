@@ -20,7 +20,7 @@ const Navbar = () => {
   const profileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const searchModalRef = useRef() as React.MutableRefObject<HTMLDivElement>
   
-  const { userState, logout } = useStore()
+  const { userState, cartState, logout } = useStore()
 
   const handleLogout = async() => {
     await logout()
@@ -108,7 +108,7 @@ const Navbar = () => {
               <div className='rounded-full p-2 bg-gray-800 text-white flex items-center justify-center'>
                 <FaBagShopping className='text-xs' />
               </div>
-              <p className='md:block hidden'>Cart (0)</p>
+              <p className='md:block hidden'>Cart ({cartState.data.length})</p>
             </Link>
             {
               !userState.data.accessToken

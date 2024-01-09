@@ -11,6 +11,7 @@ export interface GlobalStoreState {
   productState: IProductState
   productDiscountState: IProductDiscountState
   ownerPickState: IOwnerPickState
+  cartState: ICartState
 }
 
 export interface IGeneralField {
@@ -113,5 +114,17 @@ export interface IOwnerPick extends IGeneralField {
 
 export interface IOwnerPickState {
   data: IOwnerPick[]
+  loading: boolean
+}
+
+export interface ICart {
+  product: IProduct
+  qty: number
+  size: string
+  color: IProductColor
+}
+
+export interface ICartState {
+  data: ICart[]
   loading: boolean
 }
