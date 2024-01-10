@@ -16,10 +16,8 @@ const cartStore = (set: any) => {
         const findSelectedCart = localStorageCart.find((item: ICart) => item.size === data.size && item.color.hexCode === data.color.hexCode && item.product._id === data.product._id)
 
         if (findSelectedCart) {
-          console.log('hit 1')
           newCart = localStorageCart.map((item: ICart) => item.size === data.size && item.color.hexCode === data.color.hexCode && item.product._id === data.product._id ? data: item)
         } else {
-          console.log('hit 2')
           newCart = [data, ...localStorageCart]
         }
       } else {
@@ -37,6 +35,41 @@ const cartStore = (set: any) => {
       set((state: GlobalStoreState) => {
         state.cartState.data = localStorageCart
       }, false, 'read_cart/success')
+    },
+    deleteCart: async(data: ICart) => {
+      const localStorageCart = JSON.parse(localStorage.getItem('ue_cart') || '[]')
+      
+      const newCart = localStorageCart.filter((item: ICart) => !(item.size === data.size && item.color.hexCode === data.color.hexCode && item.product._id === data.product._id))
+
+      localStorage.setItem('ue_cart', JSON.stringify(newCart))
+
+      set((state: GlobalStoreState) => {
+        state.cartState.data = newCart
+      }, false, 'delete_cart/success')
+    },
+    updateCartSelectedStatus: (data: ICart) => {
+      const localStorageCart = JSON.parse(localStorage.getItem('ue_cart') || '[]')
+      const newCart = localStorageCart.map((item: ICart) => item.size === data.size && item.color.hexCode === data.color.hexCode && item.product._id === data.product._id ? { ...data, selected: data.selected ? false : true } : item)
+      
+      localStorage.setItem('ue_cart', JSON.stringify(newCart))
+      set((state: GlobalStoreState) => {
+        state.cartState.data = newCart
+      }, false, 'update_cart_selected_status/success')
+    },
+    bulkUpdateCartSelectedStatus: (type: boolean) => {
+      const localStorageCart = JSON.parse(localStorage.getItem('ue_cart') || '[]')
+      
+      const newCart: ICart[] = []
+
+      for (let i = 0; i < localStorageCart.length; i++) {
+        newCart.push({ ...localStorageCart[i], selected: type })
+      }
+
+      localStorage.setItem('ue_cart', JSON.stringify(newCart))
+
+      set((state: GlobalStoreState) => {
+        state.cartState.data = newCart
+      }, false, 'bulk_update_cart_selected_status/success')
     }
   }
 }

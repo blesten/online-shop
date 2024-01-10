@@ -63,12 +63,18 @@ const AddToCart: React.FC<IProps> = ({ openAddToCartModal, setOpenAddToCartModal
   }
 
   const handleAddToCart = () => {
+    // @ts-ignore 
+    const findStock = (selectedColor as IProductColor).sizes.find(item => item.size === selectedSize.size)
+
     createCart({
       product,
       qty,
       // @ts-ignore
       size: selectedSize.size,
-      color: selectedColor as IProductColor
+      color: selectedColor as IProductColor,
+      discount: product.discount,
+      stock: findStock?.stock as number,
+      selected: true
     })
     
     setOpenAddToCartModal(false)

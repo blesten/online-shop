@@ -104,7 +104,7 @@ const Navbar = () => {
               </div>
               <p className='md:block hidden'>Wishlist (0)</p>
             </Link>
-            <Link to='/' className='flex items-center gap-3'>
+            <Link to='/cart' className='flex items-center gap-3'>
               <div className='rounded-full p-2 bg-gray-800 text-white flex items-center justify-center'>
                 <FaBagShopping className='text-xs' />
               </div>

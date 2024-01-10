@@ -122,6 +122,9 @@ export interface ICart {
   qty: number
   size: string
   color: IProductColor
+  discount: number
+  stock: number
+  selected: boolean
 }
 
 export interface ICartState {
