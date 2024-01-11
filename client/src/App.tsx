@@ -13,6 +13,7 @@ import Alert from './components/general/Alert'
 import useStore from './store/store'
 import Dashboard from './pages/admin/Dashboard'
 import OwnerPick from './pages/admin/OwnerPick'
+import BottomAlert from './components/general/BottomAlert'
 
 const App = () => {
   const { userState, refreshToken, readCart } = useStore()
@@ -45,6 +46,7 @@ const App = () => {
         </Routes>
       </Router>
       
+      <BottomAlert />
       <Alert />
     </>
   )

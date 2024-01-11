@@ -51,6 +51,11 @@ const cartStore = (set: any) => {
           state.cartState.data = cartStateCopy
         }, false, 'create_cart/success')
       }
+
+      set((state: GlobalStoreState) => {
+        state.bottomAlertState.entity = 'cart'
+        state.bottomAlertState.type = 'success'
+      }, false, 'bottom_alert/initiate')
     },
     readCart: async(token?: string) => {
       if (!token) {
@@ -86,6 +91,11 @@ const cartStore = (set: any) => {
           state.cartState.data = newCart
         }, false, 'delete_cart/success')
       }
+      
+      set((state: GlobalStoreState) => {
+        state.bottomAlertState.entity = 'cart'
+        state.bottomAlertState.type = 'error'
+      }, false, 'bottom_alert/initiate')
     },
     updateCartSelectedStatus: async(data: ICart, token?: string) => {
       if (!token) {
