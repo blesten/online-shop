@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
 import { FaBagShopping, FaHeart, FaUser } from 'react-icons/fa6'
 import { RxHamburgerMenu } from 'react-icons/rx'
@@ -19,12 +19,15 @@ const Navbar = () => {
   const sidebarRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const profileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const searchModalRef = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  const navigate = useNavigate()
   
   const { userState, cartState, logout } = useStore()
 
   const handleLogout = async() => {
     await logout()
     setOpenProfileDropdown(false)
+    navigate('/')
   }
 
   useEffect(() => {
