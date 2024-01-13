@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Footer from './../components/general/Footer'
 import Navbar from './../components/general/Navbar'
 import HeadInfo from './../utils/HeadInfo'
+import { useNavigate } from 'react-router-dom'
 import { FormChanged } from '../utils/interface'
 import { BITESHIP_AUTHORIZATION_KEY, LOCATION_API_KEY } from '../config/key'
 import useStore from './../store/store'
 import { APP_NAME } from '../utils/constant'
 import { currencyFormatter } from '../utils/currency'
 import Loader from '../components/general/Loader'
+import Payment from '../components/modal/Checkout/Payment'
+import { validEmail, validPhoneNumber } from '../utils/validator'
 
 interface ILocation {
   id: string
@@ -45,7 +48,13 @@ const Checkout = () => {
     postalCode: ''
   })
 
-  const { cartState } = useStore()
+  const [openPaymentModal, setOpenPaymentModal] = useState(false)
+
+  const paymentModalRef = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  const navigate = useNavigate()
+
+  const { userState, cartState, initiate } = useStore()
 
   const handleChange = (e: FormChanged) => {
     const { name, value } = e.target
@@ -109,6 +118,48 @@ const Checkout = () => {
     setLoadingShipmentCost(false)
   }
 
+  const handleClickPayNow = () => {
+    if (
+      !shippingInformation.firstName ||
+      !shippingInformation.lastName ||
+      !shippingInformation.email ||
+      !shippingInformation.phone ||
+      !shippingInformation.address ||
+      !shippingInformation.province ||
+      !shippingInformation.city ||
+      !shippingInformation.district ||
+      !shippingInformation.postalCode ||
+      !selectedCourier ||
+      !selectedService?.price
+    ) {
+      initiate('Please provide required field to checkout', 'error')
+      return
+    }
+
+    if (!validEmail(shippingInformation.email)) {
+      initiate('Please provide valid email address', 'error')
+      return
+    }
+
+    if (!validPhoneNumber(shippingInformation.phone)) {
+      initiate('Please provide valid phone number', 'error')
+      return
+    }
+
+    setOpenPaymentModal(true)
+  }
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      if (openPaymentModal && paymentModalRef.current && !paymentModalRef.current.contains(e.target as Node)) {
+        setOpenPaymentModal(false)
+      }
+    }
+
+    document.addEventListener('mousedown', checkIfClickedOutside)
+    return () => document.removeEventListener('mousedown', checkIfClickedOutside)
+  }, [openPaymentModal])
+
   useEffect(() => {
     const fetchProvincesData = async() => {
       const provincesData = await fetch(`https://api.goapi.io/regional/provinsi?api_key=${LOCATION_API_KEY}`)
@@ -171,6 +222,12 @@ const Checkout = () => {
 
     fetchPostalCodes(shippingInformation.district)
   }, [shippingInformation.district, shippingInformation.city, shippingInformation.province])
+
+  useEffect(() => {
+    if (!userState.data.accessToken) {
+      navigate('/login')
+    }
+  }, [userState.data.accessToken, navigate])
 
   return (
     <>
@@ -443,7 +500,7 @@ const Checkout = () => {
                       <p>{currencyFormatter(cartState.data.reduce((acc, item) => (item.selected ? ((item.product.price - ((item.discount * item.product.price) / 100)) * item.qty) : 0) + acc, 0) + (selectedService?.price || 0))},00</p>
                     </div>
                   </div>
-                  <button disabled={!shippingInformation.firstName || !shippingInformation.lastName || !shippingInformation.email || !shippingInformation.phone || !shippingInformation.address || !shippingInformation.province || !shippingInformation.city || !shippingInformation.district || !shippingInformation.postalCode || !selectedCourier || !selectedService?.price} className={`${!shippingInformation.firstName || !shippingInformation.lastName || !shippingInformation.email || !shippingInformation.phone || !shippingInformation.address || !shippingInformation.province || !shippingInformation.city || !shippingInformation.district || !shippingInformation.postalCode || !selectedCourier || !selectedService?.price ? 'bg-gray-300 cursor-not-allowed hover:bg-gray-300' : 'bg-black cursor-pointer hover:bg-gray-800'} w-full py-3 transition text-white font-semibold rounded-full text-sm`}>Pay Now</button>
+                  <button onClick={handleClickPayNow} disabled={!shippingInformation.firstName || !shippingInformation.lastName || !shippingInformation.email || !shippingInformation.phone || !shippingInformation.address || !shippingInformation.province || !shippingInformation.city || !shippingInformation.district || !shippingInformation.postalCode || !selectedCourier || !selectedService?.price} className={`${!shippingInformation.firstName || !shippingInformation.lastName || !shippingInformation.email || !shippingInformation.phone || !shippingInformation.address || !shippingInformation.province || !shippingInformation.city || !shippingInformation.district || !shippingInformation.postalCode || !selectedCourier || !selectedService?.price ? 'bg-gray-300 cursor-not-allowed hover:bg-gray-300' : 'bg-black cursor-pointer hover:bg-gray-800'} w-full py-3 transition text-white font-semibold rounded-full text-sm`}>Pay Now</button>
                 </div>
               </div>
             </div>
@@ -451,6 +508,17 @@ const Checkout = () => {
         )
       }
       <Footer />
+
+      <Payment
+        openPaymentModal={openPaymentModal}
+        setOpenPaymentModal={setOpenPaymentModal}
+        paymentModalRef={paymentModalRef}
+        subtotal={cartState.data.reduce((acc, item) => (item.selected ? ((item.product.price - ((item.discount * item.product.price) / 100)) * item.qty) : 0) + acc, 0)}
+        shipping={selectedService?.price || 0}
+        total={cartState.data.reduce((acc, item) => (item.selected ? ((item.product.price - ((item.discount * item.product.price) / 100)) * item.qty) : 0) + acc, 0) + (selectedService?.price || 0)}
+        phone={shippingInformation.phone}
+        user={userState.data.user?.name as string}
+      />
     </>
   )
 }
