@@ -82,3 +82,8 @@ export interface ICart extends IGeneralField {
   selected: boolean
   discount: number
 }
+
+export interface IWishlist extends IGeneralField {
+  user: ObjectId
+  product: ObjectId
+}

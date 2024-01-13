@@ -16,17 +16,19 @@ import OwnerPick from './pages/admin/OwnerPick'
 import BottomAlert from './components/general/BottomAlert'
 
 const App = () => {
-  const { userState, refreshToken, readCart } = useStore()
+  const { userState, refreshToken, readCart, readWishlist } = useStore()
 
   useEffect(() => {
     refreshToken()
 
     if (userState.data.accessToken) {
       readCart(userState.data.accessToken)
+      readWishlist(userState.data.accessToken)      
     } else {
       readCart()
+      readWishlist()
     }
-  }, [refreshToken, readCart, userState.data.accessToken])
+  }, [refreshToken, readCart, readWishlist, userState.data.accessToken])
 
   return (
     <>
