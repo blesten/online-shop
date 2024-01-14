@@ -17,6 +17,7 @@ import BottomAlert from './components/general/BottomAlert'
 import Checkout from './pages/Checkout'
 import Profile from './pages/Profile'
 import ChangePassword from './pages/ChangePassword'
+import Order from './pages/admin/Order'
 
 const App = () => {
   const { userState, refreshToken, readCart, readWishlist } = useStore()
@@ -49,6 +50,7 @@ const App = () => {
           <Route path='/admin/product' element={<Product />} />
           <Route path='/admin/category' element={<Category />} />
           <Route path='/admin/product-discount' element={<ProductDiscount />} />
+          <Route path='/admin/order' element={<Order />} />
           <Route path='/admin/owners-pick' element={<OwnerPick />} />
           <Route path='/products/:slug' element={<Detail />} />
         </Routes>
