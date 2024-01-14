@@ -10,6 +10,7 @@ import { MdLogout } from 'react-icons/md'
 import { RiDashboard3Fill } from 'react-icons/ri'
 import Search from '../modal/Navbar/Search'
 import Wishlist from '../modal/Navbar/Wishlist'
+import { IoKeySharp } from 'react-icons/io5'
 
 const Navbar = () => {
   const [onScroll, setOnScroll] = useState(false)
@@ -166,10 +167,16 @@ const Navbar = () => {
 
                     {
                       userState.data.user?.role === 'customer' &&
-                      <Link to='/profile' className='flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition rounded-t-md border-b border-gray-300'>
-                        <FaUser />
-                        <p>Profile</p>
-                      </Link>
+                      <>
+                        <Link to='/profile' className='flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition rounded-t-md border-b border-gray-300'>
+                          <FaUser />
+                          <p>Profile</p>
+                        </Link>
+                        <Link to='/change-password' className='flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition border-b border-gray-300'>
+                          <IoKeySharp />
+                          <p>Change Password</p>
+                        </Link>
+                      </>
                     }
                     <div onClick={handleLogout} className='flex items-center gap-3 py-3 px-4 hover:bg-gray-100 transition cursor-pointer rounded-b-md'>
                       <MdLogout />

@@ -4,7 +4,7 @@ import { checkArrayEquality } from '../utils/helper'
 import Checkout from '../models/Checkout'
 import { validEmail, validPhoneNumber } from '../utils/validator'
 import * as Buffer from 'buffer'
-import Cart from '../models/Cart'
+import User from '../models/User'
 
 const checkoutCtrl = {
   create: async(req: IReqUser, res: Response) => {
@@ -63,6 +63,40 @@ const checkoutCtrl = {
 
       if (!validPhoneNumber(phone))
         return res.status(400).json({ msg: 'Please provide valid phone number to checkout.' })
+      
+      const user = await User.findById(req.user?._id)
+      if (!user)
+        return res.status(400).json({ msg: 'User not found.' })
+
+      if (!user.province) {
+        user.province = province
+        await user.save()
+      }
+
+      if (!user.city) {
+        user.city = city
+        await user.save()
+      }
+
+      if (!user.district) {
+        user.district = district
+        await user.save()
+      }
+
+      if (!user.postalCode) {
+        user.postalCode = postalCode
+        await user.save()
+      }
+
+      if (!user.handphoneNo) {
+        user.handphoneNo = phone
+        await user.save()
+      }
+
+      if (!user.address) {
+        user.address = address
+        await user.save()
+      }
      
       const checkout = new Checkout({
         xenditId,

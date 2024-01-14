@@ -33,19 +33,24 @@ const userSchema = new mongoose.Schema<IUser>({
     default: 'customer'
   },
   province: {
-    type: String
+    type: String,
+    default: ''
   },
   city: {
-    type: String
+    type: String,
+    default: ''
   },
   district: {
-    type: String
+    type: String,
+    default: ''
   },
   postalCode: {
-    type: String
+    type: String,
+    default: ''
   },
   address: {
-    type: String
+    type: String,
+    default: ''
   }
 }, {
   timestamps: true

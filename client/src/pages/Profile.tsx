@@ -37,7 +37,7 @@ const Profile = () => {
   
   const fileInputRef = useRef<HTMLInputElement | null>(null)
   
-  const { userState, initiate, updateProfile } = useStore()
+  const { userState, initiate, updateProfile, refreshToken } = useStore()
 
   const navigate = useNavigate()
 
@@ -169,6 +169,10 @@ const Profile = () => {
       }
     }
   }, [userState.data.user, userState.data.accessToken, userState.loading, navigate])
+
+  useEffect(() => {
+    refreshToken()
+  }, [refreshToken])
 
   return (
     <>

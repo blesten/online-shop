@@ -182,6 +182,33 @@ const userCtrl = {
     } catch (err: any) {
       return res.status(500).json({ msg: err.message })
     }
+  },
+  changePassword: async(req: IReqUser, res: Response) => {
+    try {
+      const { currentPassword, newPassword } = req.body
+
+      if (!currentPassword || !newPassword)
+        return res.status(400).json({ msg: 'Please provide current password and new password.' })
+
+      if (newPassword.length < 8)
+        return res.status(400).json({ msg: 'Password should be at least 8 characters.' })
+      else if (!validPassword(newPassword))
+        return res.status(400).json({ msg: 'Password should be combination of lowercase, uppercase, number, and symbol.' })
+
+      const user = await User.findById(req.user?._id)
+
+      const currentPasswordChecked = await bcrypt.compare(currentPassword, user?.password!)
+      if (!currentPasswordChecked)
+        return res.status(400).json({ msg: 'Current password is incorrect.' })
+
+      const newPasswordHash = await bcrypt.hash(newPassword, 12)
+      
+      await User.findByIdAndUpdate(req.user?._id, { password: newPasswordHash })
+
+      return res.status(200).json({ msg: 'Password has been changed successfully.' })
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message })
+    }
   }
 }
 

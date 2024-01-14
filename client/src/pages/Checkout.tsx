@@ -224,10 +224,30 @@ const Checkout = () => {
   }, [shippingInformation.district, shippingInformation.city, shippingInformation.province])
 
   useEffect(() => {
-    if (!userState.data.accessToken) {
-      navigate('/login')
+    setShippingInformation({
+      firstName: `${userState.data.user?.name.split(' ')[0]}`,
+      lastName: `${userState.data.user?.name.split(' ')[userState.data.user?.name.split(' ').length - 1]}`,
+      email: `${userState.data.user?.email}`,
+      phone: `${userState.data.user?.handphoneNo}`,
+      address: `${userState.data.user?.address || ''}`,
+      province: `${userState.data.user?.province}`,
+      city: `${userState.data.user?.city}`,
+      district: `${userState.data.user?.district}`,
+      postalCode: `${userState.data.user?.postalCode}`
+    })
+  }, [userState.data.user])
+  
+  useEffect(() => {
+    if (!userState.loading) {
+      if (!userState.data.accessToken) {
+        navigate('/login')
+      } else {
+        if (userState.data.user?.role === 'admin') {
+          navigate('/admin')
+        }
+      }
     }
-  }, [userState.data.accessToken, navigate])
+  }, [userState.data.user, userState.data.accessToken, userState.loading, navigate])
 
   return (
     <>

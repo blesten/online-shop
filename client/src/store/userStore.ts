@@ -123,7 +123,7 @@ const userStore = (set: any) => {
         }
 
         // @ts-ignore
-        const res = await patchDataAPI('/user', { ...data, avatar: tempAvatar.length > 0 ? newAvatarUrl : data.avatar }, token)
+        const res = await patchDataAPI('/user/profile', { ...data, avatar: tempAvatar.length > 0 ? newAvatarUrl : data.avatar }, token)
 
         set((state: GlobalStoreState) => {
           state.userState.data = { ...state.userState.data, user: res.data.user }
