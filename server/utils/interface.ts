@@ -115,4 +115,7 @@ export interface ICheckout extends IGeneralField {
   total: number
   waybill: string
   complete: boolean
+  xenditId: string
+  paymentStatus: string
+  paymentMethod: string
 }
