@@ -32,13 +32,20 @@ const userSchema = new mongoose.Schema<IUser>({
     type: String,
     default: 'customer'
   },
-  isValidEmail: {
-    type: Number,
-    default: 0
+  province: {
+    type: String
   },
-  isValidPhone: {
-    type: Number,
-    default: 0
+  city: {
+    type: String
+  },
+  district: {
+    type: String
+  },
+  postalCode: {
+    type: String
+  },
+  address: {
+    type: String
   }
 }, {
   timestamps: true

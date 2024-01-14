@@ -15,6 +15,7 @@ import Dashboard from './pages/admin/Dashboard'
 import OwnerPick from './pages/admin/OwnerPick'
 import BottomAlert from './components/general/BottomAlert'
 import Checkout from './pages/Checkout'
+import Profile from './pages/Profile'
 
 const App = () => {
   const { userState, refreshToken, readCart, readWishlist } = useStore()
@@ -41,6 +42,7 @@ const App = () => {
           <Route path='/products' element={<Products />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='/admin' element={<Dashboard />} />
           <Route path='/admin/product' element={<Product />} />
           <Route path='/admin/category' element={<Category />} />

@@ -518,6 +518,10 @@ const Checkout = () => {
         total={cartState.data.reduce((acc, item) => (item.selected ? ((item.product.price - ((item.discount * item.product.price) / 100)) * item.qty) : 0) + acc, 0) + (selectedService?.price || 0)}
         phone={shippingInformation.phone}
         user={userState.data.user?.name as string}
+        shippingInformation={shippingInformation}
+        courier={selectedCourier}
+        service={selectedService?.courier_service_name as string}
+        item={cartState.data.filter(item => item.selected)}
       />
     </>
   )
