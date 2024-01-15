@@ -1,4 +1,4 @@
-import { getDataAPI } from "../utils/fetchData";
+import { getDataAPI, patchDataAPI } from "../utils/fetchData";
 import { GlobalStoreState, ICheckoutState } from "../utils/interface";
 
 const customerOrderState: ICheckoutState = {
@@ -35,6 +35,22 @@ const customerOrderStore = (set: any) => {
       set((state: GlobalStoreState) => {
         state.customerOrderState.loading = false
       }, false, 'read_customer_order/done_loading')
+    },
+    updateWaybill: async(id: string, waybill: string, token: string) => {
+      try {
+        const res = await patchDataAPI(`/checkout/${id}/waybill`, { waybill }, token)
+
+        set((state: GlobalStoreState) => {
+          state.customerOrderState.data = state.customerOrderState.data.map(item => item._id === id ? { ...item, waybill } : item)
+          state.alertState.message = res.data.msg
+          state.alertState.type = 'success'
+        }, false, 'update_order_waybill/success')
+      } catch (err: any) {
+        set((state: GlobalStoreState) => {
+          state.alertState.message = err.response.data.msg
+          state.alertState.type = 'error'
+        }, false, 'update_order_waybill/error')
+      }
     }
   }
 }

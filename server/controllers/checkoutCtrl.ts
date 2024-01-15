@@ -253,9 +253,17 @@ const checkoutCtrl = {
         dataAggregation.unshift({
           $match: { waybill: { $eq: '' } }
         })
+
+        dataAggregation.unshift({
+          $match: { complete: { $eq: false} }
+        })
       } else if (status === 'onDelivery') {
         dataAggregation.unshift({
           $match: { waybill: { $ne: '' } }
+        })
+
+        dataAggregation.unshift({
+          $match: { complete: { $eq: false} }
         })
       } else if (status === 'complete') {
         dataAggregation.unshift({
@@ -290,7 +298,17 @@ const checkoutCtrl = {
   },
   updateWaybill: async(req: Request, res: Response) => {
     try {
-      
+      const { id } = req.params
+      const { waybill } = req.body
+
+      const checkout = await Checkout.findById(id)
+      if (!checkout)
+        return res.status(404).json({ msg: `Checkout with ID ${id} not found.` })
+
+      checkout.waybill = waybill
+      await checkout.save()
+
+      return res.status(200).json({ msg: `Order with ID ${id} status has been updated successfully.` })
     } catch (err: any) {
       return res.status(500).json({ msg: err.message })
     }

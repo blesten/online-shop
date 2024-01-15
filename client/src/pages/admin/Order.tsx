@@ -50,7 +50,8 @@ const Order = () => {
     setOpenDetailModal(true)
   }
 
-  const handleClickWaybill = () => {
+  const handleClickWaybill = (item: ICheckout) => {
+    setSelectedCustomerOrder(item)
     setOpenWaybillModal(true)
   }
 
@@ -167,7 +168,10 @@ const Order = () => {
                                   <td>{formatDate(item.createdAt)}</td>
                                   <td className='flex items-center gap-5 py-4'>
                                     <AiFillEye onClick={() => handleClickDetail(item)} className='text-blue-500 text-xl cursor-pointer' />
-                                    <MdLocalShipping onClick={handleClickWaybill} className='text-orange-500 text-xl cursor-pointer' />
+                                    {
+                                      selectedStatus !== 'complete' &&
+                                      <MdLocalShipping onClick={() => handleClickWaybill(item)} className='text-orange-500 text-xl cursor-pointer' />
+                                    }
                                   </td>
                                 </tr>
                               ))
@@ -199,6 +203,7 @@ const Order = () => {
         openWaybillModal={openWaybillModal}
         setOpenWaybillModal={setOpenWaybillModal}
         waybillModalRef={waybillModalRef}
+        selectedCustomerOrder={selectedCustomerOrder as ICheckout}
       />
 
       <Detail
