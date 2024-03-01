@@ -161,4 +161,4 @@ Special thanks to:
 [license-shield]: https://img.shields.io/github/license/blesten/online-shop.svg?style=for-the-badge
 [license-url]: https://github.com/blesten/online-shop/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/stanley-claudius
+[linkedin-url]: https://linkedin.com/in/stanleyclaudius
