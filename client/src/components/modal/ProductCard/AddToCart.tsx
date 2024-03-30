@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { FaStar } from 'react-icons/fa6'
 import { APP_NAME } from './../../../utils/constant'
 import { currencyFormatter } from '../../../utils/currency'
-import { IProduct, IProductColor } from '../../../utils/interface'
+import { IProduct, IProductColor, IReview } from '../../../utils/interface'
 import { LuMinus, LuPlus } from 'react-icons/lu'
 import useStore from './../../../store/store'
+import { getDataAPI } from '../../../utils/fetchData'
 
 interface IProps {
   product: IProduct
@@ -24,6 +25,7 @@ const AddToCart: React.FC<IProps> = ({ openAddToCartModal, setOpenAddToCartModal
   const [selectedColor, setSelectedColor] = useState<Partial<IProductColor>>({})
   const [selectedSize, setSelectedSize] = useState({})
   const [qty, setQty] = useState(1)
+  const [reviews, setReviews] = useState<IReview[]>([])
 
   const { userState, createCart } = useStore()
 
@@ -94,6 +96,20 @@ const AddToCart: React.FC<IProps> = ({ openAddToCartModal, setOpenAddToCartModal
   }
 
   useEffect(() => {
+    const fetchAllReviews = async(id: string) => {
+      try {
+        const res = await getDataAPI(`/review/all?productId=${id}`)
+        setReviews(res.data.reviews)
+      } catch (err: any) {
+        console.log(err.response.data.msg)
+      }
+    }
+
+    if (product._id)
+      fetchAllReviews(product._id)
+  }, [product._id])
+
+  useEffect(() => {
     setSelectedColor(colors[0])
   }, [colors])
 
@@ -117,9 +133,12 @@ const AddToCart: React.FC<IProps> = ({ openAddToCartModal, setOpenAddToCartModal
           <div className='flex items-center gap-2 mt-5'>
             <div className='flex items-centar gap-2'>
               <FaStar className='text-orange-400 text-lg' />
-              <p className='text-sm'>4/5</p>
+              {
+                reviews.length > 0 &&
+                <p className='text-sm'>{reviews.length > 0 ? reviews.reduce((acc, curr) => acc + curr.star, 0) / reviews.length : 0}/5</p>
+              }
             </div>
-            <p className='text-gray-500 text-sm'>(120 Reviews)</p>
+            <p className='text-gray-500 text-sm'>({reviews.length > 0 ? reviews.length : 0} {reviews.length > 1 ? 'Reviews' : 'Review'})</p>
           </div>
           <div className='mt-8 flex items-center justify-between'>
             {

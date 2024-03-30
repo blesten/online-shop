@@ -6,6 +6,8 @@ const router = express.Router()
 
 router.route('/').post(isAuthenticated, reviewCtrl.create)
 
+router.route('/all').get(reviewCtrl.readAll)
+
 router.route('/eligibility/:id').get(isAuthenticated, reviewCtrl.checkReviewEligibility)
 
 router.route('/:id').get(reviewCtrl.read)

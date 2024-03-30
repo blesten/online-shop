@@ -7,7 +7,7 @@ import Footer from "../../components/general/Footer"
 import Navbar from "../../components/general/Navbar"
 import ProductCard from '../../components/general/ProductCard';
 import HeadInfo from '../../utils/HeadInfo';
-import { IProduct, IProductColor } from '../../utils/interface';
+import { IProduct, IProductColor, IReview } from '../../utils/interface';
 import { getDataAPI } from '../../utils/fetchData';
 import { currencyFormatter } from '../../utils/currency';
 import Loader from '../../components/general/Loader';
@@ -31,6 +31,7 @@ const Detail = () => {
   const [openReviewModal, setOpenReviewModal] = useState(false)
   const [reviewEligibility, setReviewEligibility] = useState(false)
   const [page, setPage] = useState(1)
+  const [reviews, setReviews] = useState<IReview[]>([])
   const limit = 9
 
   const [tab, setTab] = useState('overview')
@@ -135,6 +136,20 @@ const Detail = () => {
   }, [readReview, product._id, page, limit])
 
   useEffect(() => {
+    const fetchAllReviews = async(id: string) => {
+      try {
+        const res = await getDataAPI(`/review/all?productId=${id}`)
+        setReviews(res.data.reviews)
+      } catch (err: any) {
+        console.log(err.response.data.msg)
+      }
+    }
+
+    if (product._id)
+      fetchAllReviews(product._id)
+  }, [product._id])
+
+  useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
       if (openReviewModal && reviewModalRef.current && !reviewModalRef.current.contains(e.target as Node)) {
         setOpenReviewModal(false)
@@ -236,9 +251,12 @@ const Detail = () => {
                   <div className='flex items-center gap-2 mt-5'>
                     <div className='flex items-centar gap-2'>
                       <FaStar className='text-orange-400 text-lg' />
-                      <p className='text-sm'>4/5</p>
+                      {
+                        reviews.length > 0 &&
+                        <p className='text-sm'>{reviews.length > 0 ? reviews.reduce((acc, curr) => acc + curr.star, 0) / reviews.length : 0}/5</p>
+                      }
                     </div>
-                    <p className='text-gray-500 text-sm'>(120 Reviews)</p>
+                    <p className='text-gray-500 text-sm'>({reviews.length > 0 ? reviews.length : 0} {reviews.length > 1 ? 'Reviews' : 'Review'})</p>
                   </div>
                   <div className='mt-8 flex items-center justify-between'>
                     {

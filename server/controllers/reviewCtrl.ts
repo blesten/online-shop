@@ -98,6 +98,16 @@ const reviewCtrl = {
       return res.status(500).json({ msg: err.message })
     }
   },
+  readAll: async(req: Request, res: Response) => {
+    try {
+      const { productId } = req.query
+
+      const reviews = await Review.find({ product: productId })
+      return res.status(200).json({ reviews })
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message })
+    }
+  },
   checkReviewEligibility: async(req: IReqUser, res: Response) => {
     try {
       const { id } = req.params
