@@ -374,7 +374,7 @@ const Detail = () => {
                                               )
                                               : (
                                                 <div className='w-20 h-20 rounded-full bg-gray-100 border border-gray-200'>
-                                                  <img src={item.user.avatar} alt={`${APP_NAME} - ${product.name}`} />
+                                                  <img src={item.user.avatar} alt={`${APP_NAME} - ${product.name}`} className='w-full h-full rounded-full object-cover' />
                                                 </div>
                                               )
                                             }
