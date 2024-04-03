@@ -20,7 +20,7 @@
     <a href="https://github.com/blesten/online-shop"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/blesten/online-shop">View Demo</a>
+    <a href="https://youtu.be/4FdYpdXkVM0">View Demo</a>
     ·
     <a href="https://github.com/blesten/online-shop/issues">Report Bug</a>
     ·
