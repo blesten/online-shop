@@ -1,6 +1,5 @@
 import { AiOutlineClose } from "react-icons/ai"
 import { currencyFormatter } from "../../../utils/currency"
-import { APP_NAME } from "../../../utils/constant"
 import { ICheckout } from "../../../utils/interface"
 
 interface IProps {
@@ -17,7 +16,7 @@ const Detail: React.FC<IProps> = ({ openDetailModal, setOpenDetailModal, detailM
   }
 
   return (
-    <div className={`${openDetailModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.6)] flex items-center justify-center transition-opacity z-10`}>
+    <div className={`${openDetailModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.6)] flex items-center justify-center transition-opacity z-20`}>
       <div ref={detailModalRef} className={`w-1/2 flex flex-col max-h-[90%] bg-white rounded-lg ${openDetailModal ? 'translate-y-0' : '-translate-y-10'} transition-transform`}>
         <div className='flex items-center justify-between px-6 py-3 border-b border-gray-300 bg-gray-900 text-white rounded-t-lg'>
           <p className='font-semibold'>Order Detail</p>
@@ -74,7 +73,7 @@ const Detail: React.FC<IProps> = ({ openDetailModal, setOpenDetailModal, detailM
                     <div key={idx} className='flex items-center justify-between'>
                       <div className='flex items-center gap-5'>
                         <div className='w-28 h-28 rounded-md bg-gray-100 border border-gray-300'>
-                          <img src={item.images[0]} alt={`${APP_NAME} - ${item.name}`} className='w-full h-full rounded-md object-cover' />
+                          <img src={item.images[0]} alt={`Byte Craft Studio Sample Works - Online Shop - ${item.name}`} className='w-full h-full rounded-md object-cover' />
                         </div>
                         <div>
                           <div className='flex items-center gap-4'>
@@ -137,10 +136,10 @@ const Detail: React.FC<IProps> = ({ openDetailModal, setOpenDetailModal, detailM
                   <div className={`${selectedCustomerOrder.courier === 'jne' ? 'w-28 h-14' : selectedCustomerOrder.courier === 'jnt' ? 'w-38 h-14' : 'w-38 h-14'} flex items-center justify-center px-3 py-2 transition`}>
                     {
                       selectedCustomerOrder.courier === 'jne'
-                      ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jne.png`} alt={`${APP_NAME} - JNE Expedition`} className='w-full h-full' />
+                      ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jne.png`} alt={`Byte Craft Studio Sample Works - Online Shop - JNE Expedition`} className='w-full h-full' />
                       : selectedCustomerOrder.courier === 'jnt'
-                        ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jnt.png`} alt={`${APP_NAME} - JNT Expedition`} className='w-full h-full' />
-                        : <img src={`${process.env.PUBLIC_URL}/images/couriers/sicepat.png`} alt={`${APP_NAME} - Sicepat Expedition`} className='w-full h-full' />
+                        ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jnt.png`} alt={`Byte Craft Studio Sample Works - Online Shop - JNT Expedition`} className='w-full h-full' />
+                        : <img src={`${process.env.PUBLIC_URL}/images/couriers/sicepat.png`} alt={`Byte Craft Studio Sample Works - Online Shop - Sicepat Expedition`} className='w-full h-full' />
                     }
                   </div>
                   <div>

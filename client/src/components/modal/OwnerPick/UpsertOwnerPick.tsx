@@ -3,7 +3,6 @@ import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai"
 import { FormSubmitted, IOwnerPick, IProduct } from "../../../utils/interface"
 import { currencyFormatter } from "../../../utils/currency"
 import { getDataAPI } from '../../../utils/fetchData'
-import { APP_NAME } from '../../../utils/constant'
 import useStore from './../../../store/store'
 
 interface IProps {
@@ -73,7 +72,7 @@ const UpsertOwnerPick: React.FC<IProps> = ({ openUpsertOwnerPickModal, setOpenUp
   }, [selectedOwnerPick])
 
   return (
-    <div className={`${openUpsertOwnerPickModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.6)] flex items-center justify-center transition-opacity`}>
+    <div className={`${openUpsertOwnerPickModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed top-0 left-0 bottom-0 right-0 z-20 bg-[rgba(0,0,0,.6)] flex items-center justify-center transition-opacity`}>
       <div ref={upsertOwnerPickModalRef} className={`w-1/2 flex flex-col max-h-[90%] bg-white rounded-lg ${openUpsertOwnerPickModal ? 'translate-y-0' : '-translate-y-10'} transition-transform`}>
         <div className='flex items-center justify-between px-6 py-3 border-b border-gray-300 bg-gray-900 text-white rounded-t-lg'>
           <p className='font-semibold'>{Object.keys(selectedOwnerPick).length > 0 ? 'Update' : 'Select'} owner's pick</p>
@@ -107,7 +106,7 @@ const UpsertOwnerPick: React.FC<IProps> = ({ openUpsertOwnerPickModal, setOpenUp
                       products.map((item, idx) => (
                         <div onClick={() => handleSelectProduct(item)} key={item._id} className={`cursor-pointer hover:bg-gray-200 ${products.length === 1 ? 'rounded-md' : idx === 0 ? 'border-b border-gray-300 rounded-t-md' : idx === products.length - 1 ? 'rounded-b-md' : ''} transition flex items-center gap-5 p-4`}>
                           <div className='w-20 h-20 rounded-md bg-gray-200'>
-                            <img src={item.images[0]} alt={`${APP_NAME} - ${item.name}`} className='w-full h-full object-cover rounded-md border border-gray-300' />
+                            <img src={item.images[0]} alt={`Byte Craft Studio Sample Works - Online Shop - ${item.name}`} className='w-full h-full object-cover rounded-md border border-gray-300' />
                           </div>
                           <div>
                             <h1 className='font-semibold'>{item.name}</h1>

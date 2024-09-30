@@ -20,37 +20,37 @@ const Footer = () => {
           <div>
             <p className='font-semibold text-white'>Categories</p>
             <div className='flex flex-col gap-2 text-gray-400 mt-5'>
-              <Link to='/'>Men</Link>
-              <Link to='/'>Women</Link>
-              <Link to='/'>Kid</Link>
-              <Link to='/'>Unisex</Link>
+              <Link to='/' className='w-fit'>Men</Link>
+              <Link to='/' className='w-fit'>Women</Link>
+              <Link to='/' className='w-fit'>Kid</Link>
+              <Link to='/' className='w-fit'>Unisex</Link>
             </div>
           </div>
           <div>
             <p className='font-semibold text-white'>Collections</p>
             <div className='flex flex-col gap-2 text-gray-400 mt-5'>
-              <Link to='/'>Summer</Link>
-              <Link to='/'>Winter</Link>
-              <Link to='/'>Chinese New Year</Link>
-              <Link to='/'>Spring</Link>
-              <Link to='/'>Autumn</Link>
+              <Link to='/' className='w-fit'>Summer</Link>
+              <Link to='/' className='w-fit'>Winter</Link>
+              <Link to='/' className='w-fit'>Chinese New Year</Link>
+              <Link to='/' className='w-fit'>Spring</Link>
+              <Link to='/' className='w-fit'>Autumn</Link>
             </div>
           </div>
           <div>
             <p className='font-semibold text-white'>Customer Care</p>
             <div className='flex flex-col gap-2 text-gray-400 mt-5'>
-              <Link to='/'>FAQ</Link>
-              <Link to='/'>Shipping</Link>
-              <Link to='/'>Order Status</Link>
-              <Link to='/'>Return & Exchange</Link>
+              <Link to='/' className='w-fit'>FAQ</Link>
+              <Link to='/' className='w-fit'>Shipping</Link>
+              <Link to='/' className='w-fit'>Order Status</Link>
+              <Link to='/' className='w-fit'>Return & Exchange</Link>
             </div>
           </div>
           <div>
             <p className='font-semibold text-white'>Company</p>
             <div className='flex flex-col gap-2 text-gray-400 mt-5'>
-              <Link to='/'>Privacy</Link>
-              <Link to='/'>Guides</Link>
-              <Link to='/'>Term of Conditions</Link>
+              <Link to='/' className='w-fit'>Privacy</Link>
+              <Link to='/' className='w-fit'>Guides</Link>
+              <Link to='/' className='w-fit'>Term of Conditions</Link>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@ const Footer = () => {
           <RiTwitterXLine />
         </div>
       </div>
-      <p className='text-white text-xs text-center lg:mt-16 mt-10'>&copy; 2023 {APP_NAME}, Inc - All Rights Reserved</p>
+      <p className='text-white text-xs text-center lg:mt-16 mt-10'>&copy; {new Date().getFullYear()} Byte Craft Studio Sample Works - All Rights Reserved</p>
     </div>
   )
 }

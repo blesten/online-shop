@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { FormChanged } from '../utils/interface'
 import { BITESHIP_AUTHORIZATION_KEY, LOCATION_API_KEY } from '../config/key'
 import useStore from './../store/store'
-import { APP_NAME } from '../utils/constant'
 import { currencyFormatter } from '../utils/currency'
 import Loader from '../components/general/Loader'
 import Payment from '../components/modal/Checkout/Payment'
@@ -356,13 +355,13 @@ const Checkout = () => {
                   <div className='mt-6 border border-gray-300 rounded-lg p-5'>
                     <div className='flex items-center justify-between'>
                       <div onClick={() => handleSelectCourier('jne')} className={`w-24 h-12 flex items-center justify-center cursor-pointer px-3 py-2 transition ${selectedCourier === 'jne' ? 'border-black border-2 rounded-md' : 'hover:border-2 hover:border-black hover:rounded-md'}`}>
-                        <img src={`${process.env.PUBLIC_URL}/images/couriers/jne.png`} alt={`${APP_NAME} - JNE Expedition`} className='w-full h-full' />
+                        <img src={`${process.env.PUBLIC_URL}/images/couriers/jne.png`} alt={`Byte Craft Studio Sample Works - Online Shop - JNE Expedition`} className='w-full h-full' />
                       </div>
                       <div onClick={() => handleSelectCourier('jnt')} className={`w-32 h-12 flex items-center justify-center cursor-pointer px-3 py-2 transition ${selectedCourier === 'jnt' ? 'border-black border-2 rounded-md' : 'hover:border-2 hover:border-black hover:rounded-md'}`}>
-                        <img src={`${process.env.PUBLIC_URL}/images/couriers/jnt.png`} alt={`${APP_NAME} - JNE Expedition`} className='w-full h-full' />
+                        <img src={`${process.env.PUBLIC_URL}/images/couriers/jnt.png`} alt={`Byte Craft Studio Sample Works - Online Shop - JNE Expedition`} className='w-full h-full' />
                       </div>
                       <div onClick={() => handleSelectCourier('sicepat')} className={`w-38 h-12 flex items-center justify-center cursor-pointer px-3 py-2 transition ${selectedCourier === 'sicepat' ? 'border-black border-2 rounded-md' : 'hover:border-2 hover:border-black hover:rounded-md'}`}>
-                        <img src={`${process.env.PUBLIC_URL}/images/couriers/sicepat.png`} alt={`${APP_NAME} - JNE Expedition`} className='w-full h-full' />
+                        <img src={`${process.env.PUBLIC_URL}/images/couriers/sicepat.png`} alt={`Byte Craft Studio Sample Works - Online Shop - JNE Expedition`} className='w-full h-full' />
                       </div>
                     </div>
                     {
@@ -469,7 +468,7 @@ const Checkout = () => {
                       <div key={idx} className='flex md:items-center justify-between md:flex-row flex-col md:gap-0 gap-3'>
                         <div className='flex items-center gap-3'>
                           <div className='w-28 h-28 rounded-md border border-gray-300'>
-                            <img src={item.product.images[0]} alt={`${APP_NAME} - ${item.product.name}`} className='w-full h-full object-cover rounded-md' />
+                            <img src={item.product.images[0]} alt={`Byte Craft Studio Sample Works - Online Shop - ${item.product.name}`} className='w-full h-full object-cover rounded-md' />
                           </div>
                           <div>
                             <div className='flex items-center gap-3'>

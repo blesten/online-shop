@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { ICart, IProduct } from './../../utils/interface'
-import { APP_NAME } from './../../utils/constant'
 import { LuMinus, LuPlus } from 'react-icons/lu'
 import { getDataAPI } from '../../utils/fetchData'
 import { currencyFormatter } from '../../utils/currency'
@@ -159,7 +158,7 @@ const CartItem: React.FC<IProps> = ({ item }) => {
           <div className='flex items-center flex-[3]'>
             <div className='flex items-center md:gap-7 gap-5 flex-[2]'>
               <div className='w-20 h-20 rounded-md bg-gray-100 border border-gray-300'>
-                <img src={item.product.images[0]} alt={`${APP_NAME} - ${item.product.name}`} className='w-full h-full rounded-md object-cover' />
+                <img src={item.product.images[0]} alt={`Byte Craft Studio Sample Works - Online Shop - ${item.product.name}`} className='w-full h-full rounded-md object-cover' />
               </div>
               <div>
                 <div className='flex items-center gap-4'>

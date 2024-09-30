@@ -187,12 +187,12 @@ const Profile = () => {
               <div className='bg-gray-100 border border-gray-300 w-28 h-28 relative rounded-full cursor-pointer group shadow-lg'>
                 {
                   tempAvatar.length > 0
-                  ? <img src={URL.createObjectURL(tempAvatar[0])} alt='' className='w-full h-full rounded-full object-cover border border-gray-200' />
+                  ? <img src={URL.createObjectURL(tempAvatar[0])} alt='Byte Craft Studio Sample Works - Online Shop - Avatar' className='w-full h-full rounded-full object-cover border border-gray-200' />
                   : (
                     <>
                       {
                         customerInformation.avatar
-                        ? <img src={customerInformation.avatar} alt={customerInformation.name} className='w-full h-full rounded-full object-cover' />
+                        ? <img src={customerInformation.avatar} alt={`Byte Craft Studio Sample Works - Online Shop - ${customerInformation.name}`} className='w-full h-full rounded-full object-cover' />
                         : (
                           <div className='flex justify-center items-center h-full bg-gray-700 text-white rounded-full text-5xl'>
                             <p>{`${userState.data.user?.name.split(' ')[0][0]} ${userState.data.user?.name.split(' ')[userState.data.user?.name.split(' ').length - 1][0]}`}</p>

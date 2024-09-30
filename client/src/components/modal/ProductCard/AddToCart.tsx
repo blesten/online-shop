@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { FaStar } from 'react-icons/fa6'
-import { APP_NAME } from './../../../utils/constant'
 import { currencyFormatter } from '../../../utils/currency'
 import { IProduct, IProductColor, IReview } from '../../../utils/interface'
 import { LuMinus, LuPlus } from 'react-icons/lu'
@@ -117,7 +116,7 @@ const AddToCart: React.FC<IProps> = ({ openAddToCartModal, setOpenAddToCartModal
     <div className={`${openAddToCartModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.6)] flex z-10 items-center justify-center transition-opacity`}>
       <div ref={addToCartModalRef} className='w-[90%] bg-white rounded-md md:px-12 py-10 px-6 flex md:flex-row flex-col gap-8 md:items-center max-h-[95vh] overflow-auto'>
         <div className='flex-1 h-[580px] rounded-md border border-gray-300'>
-          <img style={{ objectPosition: '50% 20%' }} src={image} alt={`${APP_NAME} Product Name`} className='w-full h-full object-cover rounded-md pointer-events-none' />
+          <img style={{ objectPosition: '50% 20%' }} src={image} alt={`Byte Craft Studio Sample Works - Online Shop - Product Name`} className='w-full h-full object-cover rounded-md pointer-events-none' />
         </div>
         <div className='flex-1'>
           <div className='flex items-center gap-4'>

@@ -33,7 +33,7 @@ const Home = () => {
       <HeadInfo title='Home' />
       <Navbar />
       <div className='w-full h-[35rem] bg-gray-100 mb-12 relative'>
-        <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/home.jpg`} alt={`${APP_NAME} Home Page`} className='w-full h-full object-cover' />
+        <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/home.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Home Page`} className='w-full h-full object-cover' />
         <div className='absolute w-full h-full bg-[rgba(0,0,0,.6)] top-0 left-0' />
         <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-white'>
           <h1 style={{ wordSpacing: '10px' }} className='text-6xl tracking-widest font-semibold text-center'>MINIMALIST STYLE</h1>
@@ -67,7 +67,7 @@ const Home = () => {
       </div>
       <div className='md:px-12 px-6 md:mb-28 mb-16 flex md:flex-row flex-col items-center justify-between md:gap-14 gap-7'>
         <div className='flex-[2] h-[25rem] bg-gray-100 rounded-lg relative'>
-          <img src={`${process.env.PUBLIC_URL}/images/photos/home_outlet.jpg`} alt={`${APP_NAME} Offline Store`} className='w-full h-full object-cover rounded-lg' />
+          <img src={`${process.env.PUBLIC_URL}/images/photos/home_outlet.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Offline Store`} className='w-full h-full object-cover rounded-lg' />
           <div className='absolute w-full h-full bg-[rgba(0,0,0,.5)] top-0 left-0 rounded-lg' />
           <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-white w-full text-center'>
             <h1 style={{ wordSpacing: '10px' }} className='text-5xl tracking-widest font-semibold'>JAKARTA, INDONESIA</h1>
@@ -84,36 +84,36 @@ const Home = () => {
         <div className='grid md:grid-cols-3 grid-cols-1 xl:gap-16 md:gap-10 gap-8 mt-12 md:h-[40rem]'>
           <div className='flex flex-col md:gap-5 gap-8'>
             <div onClick={() => handleClickCategory('65994a70c814ee6f9050aae6')} className='w-full md:h-[60%] h-[20rem] bg-gray-100 rounded-md relative cursor-pointer'>
-              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/jackets.jpg`} alt={`${APP_NAME} - Jackets`} className='absolute top-0 left-0 object-cover w-full h-full rounded-md' />
+              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/jackets.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Jackets`} className='absolute top-0 left-0 object-cover w-full h-full rounded-md' />
               <div className='absolute w-full h-full bg-[rgba(0,0,0,.3)] top-0 left-0 rounded-md' />
               <h1 className='font-semibold tracking-widest text-white z-10 text-2xl absolute bottom-10 left-1/2 -translate-x-1/2'>JACKETS</h1>
             </div>
             <div onClick={() => handleClickCategory('65994b36c814ee6f9050aaf4')} className='w-full md:h-[40%] h-[20rem] bg-gray-100 rounded-md relative cursor-pointer'>
-              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/tshirt.jpg`} alt={`${APP_NAME} - T-Shirts`} className='object-cover w-full h-full rounded-md' />
+              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/tshirt.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - T-Shirts`} className='object-cover w-full h-full rounded-md' />
               <div className='absolute w-full h-full bg-[rgba(0,0,0,.6)] top-0 left-0 rounded-md' />
               <h1 className='font-semibold tracking-widest text-white z-10 text-2xl absolute bottom-10 left-1/2 -translate-x-1/2'>T-SHIRTS</h1>
             </div>
           </div>
           <div className='flex flex-col md:gap-5 gap-8'>
             <div onClick={() => handleClickCategory('65994d41c814ee6f9050ab18')} className='w-full md:h-[40%] h-[20rem] bg-gray-100 rounded-md relative cursor-pointer'>
-              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/footwear.jpg`} alt={`${APP_NAME} - Footwear`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
+              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/footwear.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Footwear`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
               <div className='absolute w-full h-full bg-[rgba(0,0,0,.3)] top-0 left-0 rounded-md' />
               <h1 className='font-semibold tracking-widest text-white z-10 text-2xl absolute bottom-10 left-1/2 -translate-x-1/2'>FOOTWEAR</h1>
             </div>
             <div onClick={() => handleClickCategory('65994beac814ee6f9050aafb')} className='w-full md:h-[60%] h-[20rem] bg-gray-100 rounded-md relative cursor-pointer'>
-              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/bottoms.jpg`} alt={`${APP_NAME} - Bottoms`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
+              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/bottoms.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Bottoms`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
               <div className='absolute w-full h-full bg-[rgba(0,0,0,.3)] top-0 left-0 rounded-md' />
               <h1 className='font-semibold tracking-widest text-white z-10 text-2xl absolute bottom-10 left-1/2 -translate-x-1/2'>BOTTOMS</h1>
             </div>
           </div>
           <div className='flex flex-col md:gap-5 gap-8'>
             <div onClick={() => handleClickCategory('65994e11c814ee6f9050ab23')} className='w-full md:h-[60%] h-[20rem] bg-gray-100 rounded-md relative cursor-pointer'>
-              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/knitwear.jpg`} alt={`${APP_NAME} - Knitwear`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
+              <img style={{ objectPosition: '50% 20%' }} src={`${process.env.PUBLIC_URL}/images/photos/knitwear.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Knitwear`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
               <div className='absolute w-full h-full bg-[rgba(0,0,0,.2)] top-0 left-0 rounded-md' />
               <h1 className='font-semibold tracking-widest text-white z-10 text-2xl absolute bottom-10 left-1/2 -translate-x-1/2'>KNITWEAR</h1>
             </div>
             <div onClick={() => handleClickCategory('65994e8ac814ee6f9050ab2a')} className='w-full md:h-[40%] h-[20rem] bg-gray-100 rounded-md relative cursor-pointer'>
-              <img style={{ objectPosition: '50% 45%' }} src={`${process.env.PUBLIC_URL}/images/photos/croptop.jpg`} alt={`${APP_NAME} - Crop Top`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
+              <img style={{ objectPosition: '50% 45%' }} src={`${process.env.PUBLIC_URL}/images/photos/croptop.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Crop Top`} className='object-cover w-full h-full rounded-md absolute top-0 left-0' />
               <div className='absolute w-full h-full bg-[rgba(0,0,0,.2)] top-0 left-0 rounded-md' />
               <h1 className='font-semibold tracking-widest text-white z-10 text-2xl absolute bottom-10 left-1/2 -translate-x-1/2'>CROP TOP</h1>
             </div>

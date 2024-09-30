@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom';
 import { FaRegStar, FaStar } from 'react-icons/fa6'
 import { LuMinus, LuPlus } from "react-icons/lu";
-import { APP_NAME } from "../../utils/constant"
 import Footer from "../../components/general/Footer"
 import Navbar from "../../components/general/Navbar"
 import ProductCard from '../../components/general/ProductCard';
@@ -208,7 +207,7 @@ const Detail = () => {
   
   return (
     <>
-      <HeadInfo title='Blazer Long Sleeve' />
+      <HeadInfo title={`${product.name || 'Loading ...'}`} />
       <Navbar />
       {
         loading
@@ -234,7 +233,7 @@ const Detail = () => {
                 <div className='flex-1 h-[600px] rounded-md border border-gray-300'>
                   {
                     product.images!.length > 0 &&
-                    <img style={{ objectPosition: '50% 20%' }} src={product.images![0]} alt={`${APP_NAME} Product Name`} className='w-full h-full object-cover rounded-md pointer-events-none' />
+                    <img style={{ objectPosition: '50% 20%' }} src={product.images![0]} alt={`Byte Craft Studio Sample Works - Online Shop - Product Name`} className='w-full h-full object-cover rounded-md pointer-events-none' />
                   }
                 </div>
                 <div className='flex-1'>
@@ -374,7 +373,7 @@ const Detail = () => {
                                               )
                                               : (
                                                 <div className='w-20 h-20 rounded-full bg-gray-100 border border-gray-200'>
-                                                  <img src={item.user.avatar} alt={`${APP_NAME} - ${product.name}`} className='w-full h-full rounded-full object-cover' />
+                                                  <img src={item.user.avatar} alt={`Byte Craft Studio Sample Works - Online Shop - ${product.name}`} className='w-full h-full rounded-full object-cover' />
                                                 </div>
                                               )
                                             }

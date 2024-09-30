@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaBagShopping } from 'react-icons/fa6'
 import { currencyFormatter } from '../../utils/currency'
-import { APP_NAME } from '../../utils/constant'
 import AddToCart from '../modal/ProductCard/AddToCart'
 import { IProduct, IProductColor } from '../../utils/interface'
 import useStore from './../../store/store'
@@ -89,7 +88,7 @@ const ProductCard: React.FC<IProps> = ({ id, name, price, image, discount, short
             }
           </div>
           <div onClick={handleClickProduct} className='w-full h-full'>
-            <img style={{ objectPosition: '50% 20%' }} src={image} alt={`${APP_NAME} - ${name}`} className='cursor-pointer w-full h-full object-cover pointer-events-none rounded-xl border border-gray-200' />
+            <img style={{ objectPosition: '50% 20%' }} src={image} alt={`Byte Craft Studio Sample Works - Online Shop - ${name}`} className='cursor-pointer w-full h-full object-cover pointer-events-none rounded-xl border border-gray-200' />
           </div>
         </div>
         <div className='flex items-center justify-between'>

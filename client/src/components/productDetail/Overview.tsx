@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { FaCaretLeft, FaCaretRight } from 'react-icons/fa6'
-import { APP_NAME } from './../../utils/constant'
 
 interface IProps {
   images: string[]
@@ -29,13 +28,13 @@ const Overview: React.FC<IProps> = ({ images }) => {
     <>
       <div className='mt-10 lg:grid hidden grid-cols-3 gap-8 h-[500px]'>
         <div className='w-full h-full rounded-lg'>
-          <img style={{ objectPosition: '50% 20%' }} src={images![0]} alt={`${APP_NAME} Product Name`} className='w-full h-[500px] rounded-lg object-cover border border-gray-300 pointer-events-none' />
+          <img style={{ objectPosition: '50% 20%' }} src={images![0]} alt={`Byte Craft Studio Sample Works - Online Shop - Product Name`} className='w-full h-[500px] rounded-lg object-cover border border-gray-300 pointer-events-none' />
         </div>
         <div className='w-full h-full rounded-lg'>
-          <img style={{ objectPosition: '50% 20%' }} src={images![1]} alt={`${APP_NAME} Product Name`} className='w-full h-[500px] rounded-lg object-cover border border-gray-300 pointer-events-none' />
+          <img style={{ objectPosition: '50% 20%' }} src={images![1]} alt={`Byte Craft Studio Sample Works - Online Shop - Product Name`} className='w-full h-[500px] rounded-lg object-cover border border-gray-300 pointer-events-none' />
         </div>
         <div className='w-full h-full rounded-lg'>
-          <img style={{ objectPosition: '50% 20%' }} src={images![2]} alt={`${APP_NAME} Product Name`} className='w-full h-[500px] rounded-lg object-cover border border-gray-300 pointer-events-none' />
+          <img style={{ objectPosition: '50% 20%' }} src={images![2]} alt={`Byte Craft Studio Sample Works - Online Shop - Product Name`} className='w-full h-[500px] rounded-lg object-cover border border-gray-300 pointer-events-none' />
         </div>
       </div>
 
@@ -44,7 +43,7 @@ const Overview: React.FC<IProps> = ({ images }) => {
           <FaCaretLeft />
         </div>
         <div className='w-full h-full rounded-lg'>
-          <img style={{ objectPosition: '50% 20%' }} src={images![image]} alt={`${APP_NAME} Product Name`} className='w-full h-full rounded-lg object-cover border border-gray-300 pointer-events-none' />
+          <img style={{ objectPosition: '50% 20%' }} src={images![image]} alt={`Byte Craft Studio Sample Works - Online Shop - Product Name`} className='w-full h-full rounded-lg object-cover border border-gray-300 pointer-events-none' />
         </div>
         <div onClick={() => handleChangeImage('next')} className={`${image === images.length - 1 ? 'bg-gray-200 cursor-not-allowed' : 'bg-black cursor-pointer'} text-white rounded-lg p-3 text-xl`}>
           <FaCaretRight />
