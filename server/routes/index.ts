@@ -7,6 +7,7 @@ import cart from './cart.route'
 import wishlist from './wishlist.route'
 import checkout from './checkout.route'
 import review from './review.route'
+import reset from './reset.route'
 
 const routes = {
   user,
@@ -17,7 +18,8 @@ const routes = {
   cart,
   wishlist,
   checkout,
-  review
+  review,
+  reset
 }
 
 export default routes

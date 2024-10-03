@@ -18,7 +18,7 @@ const Complete: React.FC<IProps> = ({ openCompleteModal, setOpenCompleteModal, c
   }
 
   return (
-    <div className={`${openCompleteModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.6)] flex items-center justify-center transition-opacity z-10 p-5`}>
+    <div className={`${openCompleteModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.6)] flex items-center justify-center transition-opacity z-20 p-5`}>
       <div ref={completeModalRef} className={`md:w-1/3 w-full flex flex-col max-h-[90%] bg-white rounded-lg ${openCompleteModal ? 'translate-y-0' : '-translate-y-10'} transition-transform p-8 flex items-center justify-center`}>
         <BsQuestionCircleFill className='text-9xl text-orange-500' />
         <p className='font-semibold text-center text-lg mt-6'>Are you sure to change order status to complete?</p>

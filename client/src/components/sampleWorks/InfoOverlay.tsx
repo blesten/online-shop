@@ -61,7 +61,7 @@ const InfoOverlay = ({ openInfoOverlay, setOpenInfoOverlay }: IProps) => {
                     </div>
                   </td>
                 </tr>
-                <tr className='bg-gray-200'>
+                <tr className='bg-gray-100'>
                   <td className='py-6 text-center'>Admin</td>
                   <td>
                     <div className='flex items-center justify-center gap-2'>
