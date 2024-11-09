@@ -19,3 +19,6 @@ yarn-error.log*
 .env
 
 key.ts
+
+BCS Online Shop PEM.pem
+BCS Online Shop PEM.ppk
