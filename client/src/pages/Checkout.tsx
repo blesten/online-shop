@@ -4,15 +4,16 @@ import Navbar from './../components/general/Navbar'
 import HeadInfo from './../utils/HeadInfo'
 import { useNavigate } from 'react-router-dom'
 import { FormChanged } from '../utils/interface'
-import { BITESHIP_AUTHORIZATION_KEY, LOCATION_API_KEY } from '../config/key'
+import { BITESHIP_AUTHORIZATION_KEY } from '../config/key'
 import useStore from './../store/store'
 import { currencyFormatter } from '../utils/currency'
 import Loader from '../components/general/Loader'
 import Payment from '../components/modal/Checkout/Payment'
 import { validEmail, validPhoneNumber } from '../utils/validator'
+import { getDataAPI } from '../utils/fetchData'
 
 interface ILocation {
-  id: string
+  _id: string
   name: string
 }
 
@@ -161,9 +162,8 @@ const Checkout = () => {
 
   useEffect(() => {
     const fetchProvincesData = async() => {
-      const provincesData = await fetch(`https://api.goapi.io/regional/provinsi?api_key=${LOCATION_API_KEY}`)
-      const jsonData = await provincesData.json()
-      setProvinces(jsonData.data)
+      const provincesData = await getDataAPI('/province')
+      setProvinces(provincesData.data.data)
     }
     
     fetchProvincesData()
@@ -171,9 +171,8 @@ const Checkout = () => {
 
   useEffect(() => {
     const fetchCitiesData = async(provinceId: string) => {
-      const citiesData = await fetch(`https://api.goapi.io/regional/kota?provinsi_id=${provinceId}&api_key=${LOCATION_API_KEY}`)
-      const jsonData = await citiesData.json()
-      setCities(jsonData.data)
+      const citiesData = await getDataAPI(`/city/${provinceId}`)
+      setCities(citiesData.data.data)
     }
 
     if (!shippingInformation.province) {
@@ -183,14 +182,13 @@ const Checkout = () => {
 
     const selectedProvince = provinces.find(item => item.name === shippingInformation.province)
     if (selectedProvince)
-      fetchCitiesData(selectedProvince.id)
+      fetchCitiesData(selectedProvince._id)
   }, [shippingInformation.province, provinces])
 
   useEffect(() => {
     const fetchDistrictsData = async(cityId: string) => {
-      const districtsData = await fetch(`https://api.goapi.io/regional/kecamatan?kota_id=${cityId}&api_key=${LOCATION_API_KEY}`)
-      const jsonData = await districtsData.json()
-      setDistricts(jsonData.data)
+      const districtsData = await getDataAPI(`/district/${cityId}`)
+      setDistricts(districtsData.data.data)
     }
 
     if (!shippingInformation.city || !shippingInformation.province) {
@@ -200,7 +198,7 @@ const Checkout = () => {
 
     const selectedCity = cities.find(item => item.name === shippingInformation.city)
     if (selectedCity)
-      fetchDistrictsData(selectedCity.id)
+      fetchDistrictsData(selectedCity._id)
   }, [shippingInformation.city, shippingInformation.province, cities])
 
   useEffect(() => {
@@ -306,7 +304,7 @@ const Checkout = () => {
                       <option value=''>Select province</option>
                       {
                         provinces.map(item => (
-                          <option key={item.id} value={item.name}>{item.name}</option>
+                          <option key={item._id} value={item.name}>{item.name}</option>
                         ))
                       }
                     </select>
@@ -317,7 +315,7 @@ const Checkout = () => {
                       <option value=''>Select city</option>
                       {
                         cities.map(item => (
-                          <option key={item.id} value={item.name}>{item.name}</option>
+                          <option key={item._id} value={item.name}>{item.name}</option>
                         ))
                       }
                     </select>
@@ -330,7 +328,7 @@ const Checkout = () => {
                       <option value=''>Select district</option>
                       {
                         districts.map(item => (
-                          <option key={item.id} value={item.name}>{item.name}</option>
+                          <option key={item._id} value={item.name}>{item.name}</option>
                         ))
                       }
                     </select>

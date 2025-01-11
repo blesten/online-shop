@@ -8,6 +8,9 @@ import wishlist from './wishlist.route'
 import checkout from './checkout.route'
 import review from './review.route'
 import reset from './reset.route'
+import province from './province.route'
+import city from './city.route'
+import district from './district.route'
 
 const routes = {
   user,
@@ -19,7 +22,10 @@ const routes = {
   wishlist,
   checkout,
   review,
-  reset
+  reset,
+  province,
+  city,
+  district
 }
 
 export default routes

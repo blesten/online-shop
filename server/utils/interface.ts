@@ -129,3 +129,19 @@ export interface IReview extends IGeneralField {
   star: number
   content: string
 }
+
+export interface IProvince extends IGeneralField {
+  name: string
+  externalId: string
+}
+
+export interface ICity extends IGeneralField {
+  provinceId: ObjectId
+  name: string
+  externalId: string
+}
+
+export interface IDistrict extends IGeneralField {
+  cityId: ObjectId
+  name: string
+}

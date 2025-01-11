@@ -102,7 +102,6 @@ Rename .env.example file at ```/config``` directory become ```.env```, then fill
 Rename key.example.ts file at ```/config``` directory become ```key.ts```, then fill the value for every key. Below is the guideline for filling the key.ts value:<br/>
     | Key | What to Fill | Example Value |
     | :---: | :---: | :---: |
-    | LOCATION_API_KEY | Your <a href="https://www.goapi.io/api-wilayah-indonesia/">GoAPI</a> API key | 5abc6de7-9a11-9b11-1822-18saj212 |
     | BITESHIP_AUTHORIZATION_KEY | Your <a href="https://www.biteship.com/">Biteship</a> authorization key | biteship_live.hhjkkhkjihi78 |
     | XENDIT_API_KEY | Your <a href="https://www.xendit.co/">Xendit</a> API key | xnd_development_jdsfkdskfdkkkdkkk222: |
     | CLOUDINARY_PRODUCTS_FOLDER_ID | Your <a href="https://www.cloudinary.com/">Cloudinary</a> "products" folder ID for this project | abcdefgh |

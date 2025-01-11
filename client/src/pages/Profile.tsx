@@ -5,12 +5,13 @@ import Footer from './../components/general/Footer'
 import Navbar from './../components/general/Navbar'
 import HeadInfo from './../utils/HeadInfo'
 import useStore from './../store/store'
-import { BITESHIP_AUTHORIZATION_KEY, LOCATION_API_KEY } from '../config/key'
+import { BITESHIP_AUTHORIZATION_KEY } from '../config/key'
 import { AiFillCamera } from 'react-icons/ai'
 import { validPhoneNumber } from '../utils/validator'
+import { getDataAPI } from '../utils/fetchData'
 
 interface ILocation {
-  id: string
+  _id: string
   name: string
 }
 
@@ -83,9 +84,8 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchProvincesData = async() => {
-      const provincesData = await fetch(`https://api.goapi.io/regional/provinsi?api_key=${LOCATION_API_KEY}`)
-      const jsonData = await provincesData.json()
-      setProvinces(jsonData.data)
+      const provincesData = await getDataAPI('/province')
+      setProvinces(provincesData.data.data)
     }
     
     fetchProvincesData()
@@ -93,9 +93,8 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchCitiesData = async(provinceId: string) => {
-      const citiesData = await fetch(`https://api.goapi.io/regional/kota?provinsi_id=${provinceId}&api_key=${LOCATION_API_KEY}`)
-      const jsonData = await citiesData.json()
-      setCities(jsonData.data)
+      const citiesData = await getDataAPI(`/city/${provinceId}`)
+      setCities(citiesData.data.data)
     }
 
     if (!customerInformation.province) {
@@ -105,14 +104,13 @@ const Profile = () => {
 
     const selectedProvince = provinces.find(item => item.name === customerInformation.province)
     if (selectedProvince)
-      fetchCitiesData(selectedProvince.id)
+      fetchCitiesData(selectedProvince._id)
   }, [customerInformation.province, provinces])
 
   useEffect(() => {
     const fetchDistrictsData = async(cityId: string) => {
-      const districtsData = await fetch(`https://api.goapi.io/regional/kecamatan?kota_id=${cityId}&api_key=${LOCATION_API_KEY}`)
-      const jsonData = await districtsData.json()
-      setDistricts(jsonData.data)
+      const districtsData = await getDataAPI(`/district/${cityId}`)
+      setDistricts(districtsData.data.data)
     }
 
     if (!customerInformation.city || !customerInformation.province) {
@@ -122,7 +120,7 @@ const Profile = () => {
 
     const selectedCity = cities.find(item => item.name === customerInformation.city)
     if (selectedCity)
-      fetchDistrictsData(selectedCity.id)
+      fetchDistrictsData(selectedCity._id)
   }, [customerInformation.city, customerInformation.province, cities])
 
   useEffect(() => {
@@ -256,7 +254,7 @@ const Profile = () => {
                   <option value=''>Select province</option>
                   {
                     provinces.map(item => (
-                      <option key={item.id} value={item.name}>{item.name}</option>
+                      <option key={item._id} value={item.name}>{item.name}</option>
                     ))
                   }
                 </select>
@@ -267,7 +265,7 @@ const Profile = () => {
                   <option value=''>Select city</option>
                   {
                     cities.map(item => (
-                      <option key={item.id} value={item.name}>{item.name}</option>
+                      <option key={item._id} value={item.name}>{item.name}</option>
                     ))
                   }
                 </select>
@@ -280,7 +278,7 @@ const Profile = () => {
                   <option value=''>Select district</option>
                   {
                     districts.map(item => (
-                      <option key={item.id} value={item.name}>{item.name}</option>
+                      <option key={item._id} value={item.name}>{item.name}</option>
                     ))
                   }
                 </select>
