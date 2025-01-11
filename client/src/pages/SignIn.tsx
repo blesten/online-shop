@@ -7,7 +7,6 @@ import HeadInfo from './../utils/HeadInfo'
 import Logo from './../components/general/Logo'
 import useStore from './../store/store'
 import { validEmail } from '../utils/validator'
-import Info from '../components/sampleWorks/Info'
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
@@ -59,9 +58,6 @@ const SignIn = () => {
     <>
       <HeadInfo title='Sign In' />
       <div className='w-full h-screen'>
-        <div className='fixed w-full top-0 z-20'>
-          <Info />
-        </div>
         <div className='flex h-full w-full'>
           <div className='flex-1 lg:px-20 px-8 flex flex-col justify-center'>
             <div className='flex justify-center mb-7'>

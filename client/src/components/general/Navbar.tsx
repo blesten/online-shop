@@ -11,7 +11,6 @@ import { RiDashboard3Fill } from 'react-icons/ri'
 import Search from '../modal/Navbar/Search'
 import Wishlist from '../modal/Navbar/Wishlist'
 import { IoKeySharp } from 'react-icons/io5'
-import Info from '../sampleWorks/Info'
 
 const Navbar = () => {
   const [onScroll, setOnScroll] = useState(false)
@@ -96,7 +95,6 @@ const Navbar = () => {
   return (
     <>
       <div className='sticky top-0 z-20'>
-        <Info />
         <div className={`flex md:px-12 px-6 py-4 gap-20 items-center justify-between bg-white ${onScroll ? 'shadow-lg' : 'shadow-none'}`}>
           <div className={`md:hidden ${openSidebar ? 'block' : 'hidden'} fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,.5)]`} />
           <div>

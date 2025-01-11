@@ -7,7 +7,6 @@ import { ReactNode } from 'react'
 import { RiDashboard3Fill } from 'react-icons/ri'
 import useStore from './../../store/store'
 import { PiCursorFill } from 'react-icons/pi'
-import Info from '../sampleWorks/Info'
 
 interface IProps {
   title: string
@@ -23,9 +22,6 @@ const AdminLayout: React.FC<IProps> = ({ title, children }) => {
     <>
       <HeadInfo title={title} />
       <div className='h-screen max-h-screen flex flex-col'>
-        <div className='sticky top-0 z-20 w-full'>
-          <Info />
-        </div>
         <div className='flex'>
           <div className='flex flex-col flex-1 py-10'>
             <div className='flex-1'>

@@ -8,7 +8,6 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { validEmail, validPassword } from '../utils/validator'
 import useStore from './../store/store'
 import { postDataAPI } from '../utils/fetchData'
-import Info from '../components/sampleWorks/Info'
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false)
@@ -72,9 +71,6 @@ const SignUp = () => {
     <>
       <HeadInfo title='Sign Up' />
       <div className='w-full h-screen'>
-        <div className='fixed w-full top-0 z-20'>
-          <Info />
-        </div>
         <div className='flex w-fll h-full'>
           <div className='flex-1 lg:px-20 px-8 flex flex-col justify-center'>
             <div className='flex justify-center mb-7'>
