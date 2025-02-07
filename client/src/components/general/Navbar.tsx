@@ -151,7 +151,7 @@ const Navbar = () => {
                         )
                         : (
                           <div className='w-8 h-8 rounded-full bg-black'>
-                            <img src={userState.data.user.avatar} alt={`Byte Craft Studio Sample Works - Online Shop - ${userState.data.user.name}`} className='w-full h-full rounded-full object-cover' />
+                            <img src={userState.data.user.avatar} alt='User Avatar' className='w-full h-full rounded-full object-cover' />
                           </div>
                         )
                       }

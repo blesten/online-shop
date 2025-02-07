@@ -73,7 +73,7 @@ const Detail: React.FC<IProps> = ({ openDetailModal, setOpenDetailModal, detailM
                     <div key={idx} className='flex items-center justify-between'>
                       <div className='flex items-center gap-5'>
                         <div className='w-28 h-28 rounded-md bg-gray-100 border border-gray-300'>
-                          <img src={item.images[0]} alt={`Byte Craft Studio Sample Works - Online Shop - ${item.name}`} className='w-full h-full rounded-md object-cover' />
+                          <img src={item.images[0]} alt='Product' className='w-full h-full rounded-md object-cover' />
                         </div>
                         <div>
                           <div className='flex items-center gap-4'>
@@ -136,10 +136,10 @@ const Detail: React.FC<IProps> = ({ openDetailModal, setOpenDetailModal, detailM
                   <div className={`${selectedCustomerOrder.courier === 'jne' ? 'w-28 h-14' : selectedCustomerOrder.courier === 'jnt' ? 'w-38 h-14' : 'w-38 h-14'} flex items-center justify-center px-3 py-2 transition`}>
                     {
                       selectedCustomerOrder.courier === 'jne'
-                      ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jne.png`} alt={`Byte Craft Studio Sample Works - Online Shop - JNE Expedition`} className='w-full h-full' />
+                      ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jne.png`} alt='Expedition' className='w-full h-full' />
                       : selectedCustomerOrder.courier === 'jnt'
-                        ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jnt.png`} alt={`Byte Craft Studio Sample Works - Online Shop - JNT Expedition`} className='w-full h-full' />
-                        : <img src={`${process.env.PUBLIC_URL}/images/couriers/sicepat.png`} alt={`Byte Craft Studio Sample Works - Online Shop - Sicepat Expedition`} className='w-full h-full' />
+                        ? <img src={`${process.env.PUBLIC_URL}/images/couriers/jnt.png`} alt='Expedition' className='w-full h-full' />
+                        : <img src={`${process.env.PUBLIC_URL}/images/couriers/sicepat.png`} alt='Expedition' className='w-full h-full' />
                     }
                   </div>
                   <div>

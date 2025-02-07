@@ -130,7 +130,7 @@ const Payment: React.FC<IProps> = ({ openPaymentModal, setOpenPaymentModal, paym
             <h1 className='text-xl font-semibold'>Payment Method</h1>
             <div className='mt-5'>
               <div className='w-36 h-16 border-2 border-black p-1 rounded-md cursor-pointer'>
-                <img src={`${process.env.PUBLIC_URL}/images/payment_method/ovo.png`} alt={`Byte Craft Studio Sample Works - Online Shop - OVO`} className='w-full h-full' />
+                <img src={`${process.env.PUBLIC_URL}/images/payment_method/ovo.png`} alt='Payment Method' className='w-full h-full' />
               </div>
             </div>
           </div>

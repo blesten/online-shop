@@ -116,7 +116,7 @@ const SignUp = () => {
             <p className='text-xs font-semibold text-center mt-5 text-gray-400'>Already have an account? <Link to='/login' className='text-black'>Login</Link></p>  
           </div>
           <div className='flex-1 px-20 bg-gray-200 md:block hidden relative'>
-            <img src={`${process.env.PUBLIC_URL}/images/photos/register.jpg`} alt={`Byte Craft Studio Sample Works - Online Shop - Sign Up`} className='object-cover w-full h-full absolute top-0 left-0 pointer-events-none' />
+            <img src={`${process.env.PUBLIC_URL}/images/photos/register.jpg`} alt='Sign Up' className='object-cover w-full h-full absolute top-0 left-0 pointer-events-none' />
           </div>
         </div>
       </div>

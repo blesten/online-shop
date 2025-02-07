@@ -445,7 +445,7 @@ const UpsertProduct: React.FC<IProps> = ({ openUpsertProductModal, setOpenUpsert
                 {
                   images.map((img: File | string, idx) => (
                     <div key={idx} className='w-20 h-20 rounded-md bg-gray-100 border border-gray-300 relative'>
-                      <img src={(typeof(img) !== 'string' ? URL.createObjectURL(img) : img)} alt={`Byte Craft Studio Sample Works - Online Shop - ${productData.name}`} className='w-full h-full object-cover rounded-md' />
+                      <img src={(typeof(img) !== 'string' ? URL.createObjectURL(img) : img)} alt='Product' className='w-full h-full object-cover rounded-md' />
                       <div onClick={() => handleRemoveImage(idx)} className='bg-red-500 text-white text-xs p-1 outline outline-offset-2 outline-white rounded-full absolute w-fit -top-2 -right-2 cursor-pointer'>
                         <AiOutlineClose />
                       </div>

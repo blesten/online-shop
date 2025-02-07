@@ -47,7 +47,7 @@ const Search: React.FC<IProps> = ({ openSearchModal, setOpenSearchModal, searchM
                 products.map((item, idx) => (
                   <Link key={item._id} to={`/products/${item._id}`} className={`hover:bg-gray-200 transition ${products.length === 1 ? 'rounded-md' : idx === 0 ? 'rounded-t-md border-b border-gray-300' : idx === products.length - 1 ? 'rounded-b-md' : ''} p-5 flex items-center gap-4`}>
                     <div className='w-24 h-24 bg-gray-200 rounded-md'>
-                      <img src={item.images[0]} alt={`Byte Craft Studio Sample Works - Online Shop - ${item.name}`} className='w-full h-full rounded-md object-cover border border-gray-300' />
+                      <img src={item.images[0]} alt='Product' className='w-full h-full rounded-md object-cover border border-gray-300' />
                     </div>
                     <div>
                       <h1 className='font-semibold text-lg'>{item.name}</h1>

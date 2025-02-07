@@ -88,7 +88,7 @@ const ProductCard: React.FC<IProps> = ({ id, name, price, image, discount, short
             }
           </div>
           <div onClick={handleClickProduct} className='w-full h-full'>
-            <img style={{ objectPosition: '50% 20%' }} src={image} alt={`Byte Craft Studio Sample Works - Online Shop - ${name}`} className='cursor-pointer w-full h-full object-cover pointer-events-none rounded-xl border border-gray-200' />
+            <img style={{ objectPosition: '50% 20%' }} src={image} alt='Product' className='cursor-pointer w-full h-full object-cover pointer-events-none rounded-xl border border-gray-200' />
           </div>
         </div>
         <div className='flex items-center justify-between'>

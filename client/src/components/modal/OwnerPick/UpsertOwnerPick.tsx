@@ -106,7 +106,7 @@ const UpsertOwnerPick: React.FC<IProps> = ({ openUpsertOwnerPickModal, setOpenUp
                       products.map((item, idx) => (
                         <div onClick={() => handleSelectProduct(item)} key={item._id} className={`cursor-pointer hover:bg-gray-200 ${products.length === 1 ? 'rounded-md' : idx === 0 ? 'border-b border-gray-300 rounded-t-md' : idx === products.length - 1 ? 'rounded-b-md' : ''} transition flex items-center gap-5 p-4`}>
                           <div className='w-20 h-20 rounded-md bg-gray-200'>
-                            <img src={item.images[0]} alt={`Byte Craft Studio Sample Works - Online Shop - ${item.name}`} className='w-full h-full object-cover rounded-md border border-gray-300' />
+                            <img src={item.images[0]} alt='Product' className='w-full h-full object-cover rounded-md border border-gray-300' />
                           </div>
                           <div>
                             <h1 className='font-semibold'>{item.name}</h1>

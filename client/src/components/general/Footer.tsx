@@ -61,7 +61,6 @@ const Footer = () => {
           <RiTwitterXLine />
         </div>
       </div>
-      <p className='text-white text-xs text-center lg:mt-16 mt-10'>&copy; {new Date().getFullYear()} Byte Craft Studio Sample Works - All Rights Reserved</p>
     </div>
   )
 }
